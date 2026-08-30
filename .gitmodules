@@ -1,0 +1,9 @@
+[submodule "ai-parrot"]
+	path = ai-parrot
+	url = git@github.com:tetsunosuke/ai-parrot.git
+[submodule "teppen"]
+	path = teppen
+	url = git@github.com:tetsunosuke/teppen.git
+[submodule "career-island"]
+	path = career-island
+	url = git@github.com:tetsunosuke/career-island.git
