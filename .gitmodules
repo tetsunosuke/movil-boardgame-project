@@ -7,3 +7,6 @@
 [submodule "career-island"]
 	path = career-island
 	url = git@github.com:tetsunosuke/career-island.git
+[submodule "my-ability-ranking"]
+	path = my-ability-ranking
+	url = git@github.com:tetsunosuke/my-ability-ranking.git
