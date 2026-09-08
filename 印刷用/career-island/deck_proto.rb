@@ -91,7 +91,7 @@ TYPES = [
   ['role', '役職', :center, 13],
   ['age', '年代', :center, 13],
   ['goal', 'キャリア目標', :center, 13],
-  ['token', 'トークン', :center, 22],
+  ['token', 'カード', :center, 22],
   ['labor', 'Labor（仕事）', :left, nil],
   ['learning', 'Learning（学習）', :left, nil],
   ['leisure', 'Leisure（余暇）', :left, nil],

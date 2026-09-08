@@ -21,7 +21,7 @@ GENERIC_SECTIONS = [
     ("role", "■ 役職カード（3種×2枚／キャラメイクで1人1枚選ぶ・若年期は選択不可）", True),
     ("age", "● 年代カード", True),
     ("goal", "◎ キャリア目標カード", True),
-    ("token", "◆ トークンカード（※各Leisure/Loveマスカードの下に1枚ずつ伏せて置く）", True),
+    ("token", "◆ カード（ひらめき／絆／体力／見通し。入手方法は各カードのsetup欄を参照）", True),
     ("labor", "■ Labor（仕事）マスカード", False),
     ("learning", "●● Learning（学習）マスカード", False),
     ("leisure", "- - Leisure（余暇）マスカード", False),
