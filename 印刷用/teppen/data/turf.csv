@@ -1,0 +1,11 @@
+value,turf_role,turf_flavor,image,Copies
++1,公衆便所裏,一番地味だが文句は言えない,turf-toilet,1
++2,自販機の裏,誰も気にも留めない,turf-vending,1
++3,路地裏の駐輪場,逃げ道が多くて助かる,turf-bicycle,1
++4,駄菓子屋横丁,ションベン臭いが縄張りは縄張り,turf-candy,1
++5,ゲーセン裏,対戦相手には事欠かない,turf-arcade-game,1
++6,商店街アーケード,シャッターは半分閉まってる,turf-shotengai,1
++7,河川敷,夜になれば誰も来ない,turf-riverbank,1
++8,駅前ロータリー,人目が多いのが難点,turf-rotary,1
++9,屋上（廃ビル）,見晴らしだけはいい,turf-rooftop,1
++10,ネオン繁華街,獲れば街の主(あるじ),turf-neon,1

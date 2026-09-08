@@ -1,0 +1,7 @@
+n,color_name,hint,bg_hex,fg_hex,Copies
+1,白,場では白のカード,#FFFFFF,#111111,6
+2,黒,場では黒のカード,#1A1A1A,#FFFFFF,6
+3,赤,場では赤のカード,#D6001C,#FFFFFF,6
+4,青,場では青のカード,#005BAC,#FFFFFF,6
+5,黄,場では黄のカード,#FFE100,#111111,6
+6,緑,場では緑のカード,#009B48,#FFFFFF,6

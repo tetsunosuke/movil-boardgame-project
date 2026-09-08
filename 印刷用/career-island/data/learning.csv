@@ -1,0 +1,9 @@
+icon,badge,name,prompt,effect_label,effect_value,bonus,setup,Copies
+●●,Learning（学習）,資格取得のための勉強に取り組む,資格取得や試験勉強の思い出はありますか？,効果,Learning+2,,,1
+●●,Learning（学習）,社外セミナー・勉強会に参加する,社外の学びの場で得たものは何でしたか？,効果,"Learning+2
+Love+1",,,1
+●●,Learning（学習）,異業種・異年代の人から刺激を受ける,自分と違う立場の人から学んだことはありますか？,効果,"Learning+1
+Love+1",,,1
+●●,Learning（学習）,失敗から教訓を得て次に活かす,失敗から学んだ経験を振り返ってみましょう。,効果,Learning+2,,,1
+●●,Learning（学習）,メンターや先輩に相談し助言を得る,誰かに相談して視野が広がった経験はありますか？,効果,"Learning+1
+Love+1",,,1

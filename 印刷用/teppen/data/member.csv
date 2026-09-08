@@ -1,0 +1,8 @@
+number,role,flavor,effect,image,Copies
+1,番長の妹,怒らせたら番長より怖い,7が場に出た回、1が自分だけなら7を倒しナワバリを獲得する。2人以上は不発。自分の7との同時出しは自動敗北。,char-banchounoimouto,6
+2,若手,根性だけはある,,char-wakate,12
+3,中堅,喧嘩慣れしてきた,,char-chuuken,12
+4,幹部候補,睨みが効く,,char-kanbukouho,12
+5,幹部,呼べば人が集まる,,char-kanbu,6
+6,若頭,名前で震え上がる,,char-wakagashira,6
+7,番長,この街の伝説,1を持つ相手が単独でいたら自動敗北する。自分の1との同時出しも自動敗北。,char-banchou,6
