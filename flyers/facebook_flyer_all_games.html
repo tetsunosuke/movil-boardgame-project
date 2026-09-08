@@ -3,313 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Facebook投稿用カード - アナログゲーム展示・試遊会</title>
+  <title>Facebook投稿用 - アナログゲーム展示・試遊会</title>
   <style>
-    @page { size: A4 landscape; margin: 0; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", MeiRy, sans-serif;
       color: #0f172a;
-      background-color: #f1f5f9;
-      width: 1200px;
+      background-color: #f8fafc;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 30px;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
+      padding: 30px 20px;
+      line-height: 1.6;
     }
 
-    .container {
+    .card-wrapper {
       background: #ffffff;
-      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      border: 1px solid #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
-    /* メインアイキャッチバナー */
-    .banner-wrapper {
-      position: relative;
-      width: 100%;
-      height: 420px;
-      overflow: hidden;
-      background-color: #0f172a;
-    }
-    .banner-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0.9;
-    }
-    .banner-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.4), transparent);
-      padding: 24px 32px;
+    /* ヘッダー */
+    header {
+      background: #0f172a;
       color: #ffffff;
+      padding: 24px 28px;
     }
     .badge {
       display: inline-block;
       background: #2563eb;
       color: #ffffff;
-      font-size: 13px;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 3px 10px;
+      border-radius: 4px;
       margin-bottom: 8px;
-      letter-spacing: 0.5px;
     }
-    .banner-title {
-      font-size: 26px;
-      font-weight: 900;
+    header h1 {
+      font-size: 22px;
+      font-weight: 800;
       line-height: 1.3;
       margin-bottom: 4px;
     }
-    .banner-sub {
-      font-size: 14px;
+    header p {
+      font-size: 13.5px;
       opacity: 0.9;
     }
 
-    /* Content Body */
-    .content-body {
-      padding: 28px 32px;
+    /* 本文 */
+    .body-content {
+      padding: 24px 28px;
     }
 
-    .intro-section {
-      background-color: #f8fafc;
-      border-left: 4px solid #0f172a;
-      padding: 14px 18px;
-      border-radius: 0 8px 8px 0;
-      font-size: 14.5px;
-      line-height: 1.6;
+    .intro-text {
+      font-size: 14px;
       color: #334155;
+      background-color: #f1f5f9;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
       margin-bottom: 24px;
     }
 
-    /* 4ゲームカードグリッド */
+    /* 4ゲームグリッド */
     .games-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-bottom: 28px;
+      gap: 16px;
+      margin-bottom: 24px;
     }
-    .game-card {
+    .game-item {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
       background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 18px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-      position: relative;
     }
-    .game-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      border-radius: 12px 12px 0 0;
-    }
-    .gc1::before { background-color: #2563eb; }
-    .gc2::before { background-color: #dc2626; }
-    .gc3::before { background-color: #059669; }
-    .gc4::before { background-color: #7c3aed; }
-
     .game-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .game-tag {
-      font-size: 12px;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 4px;
-      color: #ffffff;
+      font-size: 11px;
+      font-weight: bold;
+      border: 1px solid #0f172a;
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: #0f172a;
     }
-    .gc1 .game-tag { background-color: #2563eb; }
-    .gc2 .game-tag { background-color: #dc2626; }
-    .gc3 .game-tag { background-color: #059669; }
-    .gc4 .game-tag { background-color: #7c3aed; }
-
     .game-specs {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #64748b;
       font-weight: bold;
     }
     .game-title {
-      font-size: 18px;
-      font-weight: 900;
+      font-size: 16.5px;
+      font-weight: 800;
       color: #0f172a;
       margin-bottom: 4px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
     }
     .game-catch {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: bold;
-      color: #475569;
-      margin-bottom: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px dashed #cbd5e1;
+      color: #334155;
+      margin-bottom: 6px;
     }
     .game-desc {
-      font-size: 13.5px;
+      font-size: 13px;
       line-height: 1.5;
-      color: #334155;
-      margin-bottom: 12px;
+      color: #475569;
+      margin-bottom: 10px;
     }
     .game-point {
       background-color: #f8fafc;
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-size: 12.5px;
-      color: #1e293b;
       border-left: 3px solid #64748b;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #1e293b;
+      border-radius: 0 4px 4px 0;
     }
 
-    /* フッター＆QRコード */
+    /* フッター */
     footer {
-      background-color: #0f172a;
-      color: #ffffff;
-      padding: 20px 28px;
-      border-radius: 12px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .qr-container {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       align-items: center;
     }
     .qr-box {
-      background: #ffffff;
-      padding: 8px;
-      border-radius: 8px;
       text-align: center;
-      color: #0f172a;
     }
     .qr-box img {
-      width: 76px;
-      height: 76px;
+      width: 70px;
+      height: 70px;
       display: block;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 2px;
     }
     .qr-label {
       font-size: 10px;
       font-weight: bold;
-      margin-top: 4px;
+      margin-top: 3px;
       display: block;
     }
-    .footer-text h3 {
-      font-size: 16px;
+    .footer-info h3 {
+      font-size: 14.5px;
       font-weight: bold;
-      color: #fbbf24;
-      margin-bottom: 4px;
+      color: #0f172a;
+      margin-bottom: 2px;
     }
-    .footer-text p {
-      font-size: 13px;
-      opacity: 0.9;
-      line-height: 1.45;
+    .footer-info p {
+      font-size: 12.5px;
+      color: #64748b;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="card-wrapper">
     
-    <!-- メイン生成画像バナー -->
-    <div class="banner-wrapper">
-      <img src="facebook_banner.jpg" alt="FB Banner Image">
-      <div class="banner-overlay">
-        <span class="badge">アナログゲーム展示・試遊会</span>
-        <div class="banner-title">学びとコミュニケーションを生み出す 4つのオリジナル作品</div>
-        <div class="banner-sub">人事・キャリアコンサルタントの現場知見×ゲームメカニクスプロトタイプ</div>
-      </div>
-    </div>
+    <header>
+      <span class="badge">ブース出展案内</span>
+      <h1>出展アナログゲーム プロトタイプ一覧</h1>
+      <p>企業人事・キャリアコンサルタントの視点とゲームメカニクスを活かした4つの試遊作品</p>
+    </header>
 
-    <div class="content-body">
+    <div class="body-content">
 
-      <div class="intro-section">
+      <div class="intro-text">
         <strong>【Facebookでお越しの皆さまへ】</strong><br>
-        ワークショップから生まれた4つのアナログボードゲームを出展しています！社内研修で使える自己理解ゲームからAI活用指示ゲーム、心理戦バトル、協力サバイバルまで、会場ブースにてプロトタイプの体験・試遊が可能です。
+        アナログゲーム制作ワークショップから生まれた4つのプロトタイプを出展しています。当ブースにてすべての作品を実際に触って試遊していただけます。気になる作品がございましたら、お気軽に体験・お声がけください。
       </div>
 
       <div class="games-grid">
 
-        <!-- Game 1: 私の能力ランキング -->
-        <div class="game-card gc1">
+        <!-- Game 1 -->
+        <div class="game-item">
           <div>
             <div class="game-header">
-              <span class="game-tag">キャリア × 価値観対話</span>
+              <span class="game-tag">キャリア × 自己評価</span>
               <span class="game-specs">5〜6人 / 15〜60分</span>
             </div>
             <div class="game-title">私の能力ランキング</div>
-            <div class="game-catch">自己評価と他者予想のギャップを楽しむ心理戦対話ゲーム</div>
+            <div class="game-catch">自己評価と他者予想のギャップから対話が生まれる</div>
             <div class="game-desc">
-              親が自分の強み・スキル6つに自己評価順位をつけ、子がその着順を予想するゲーム。「なぜその順位にしたのか」を語り合うことで、お互いの価値観や評価の印象の違いを深掘りできます。
+              親が自分の能力・強み6つに自己評価順位をつけ、子がその順位を予想する対話ゲーム。「なぜその順位にしたのか」を語り合うことで、お互いの価値観や印象の違いに気づくきっかけを作ります。
             </div>
           </div>
           <div class="game-point">
-            <strong>特徴：</strong> 社内研修・1on1やチームビルディングでの実施実績が豊富な自己理解ゲーム。
+            <strong>特徴：</strong> 社内研修・チームビルディングで活用事例のある自己理解ゲーム。
           </div>
         </div>
 
-        <!-- Game 2: テッペン -->
-        <div class="game-card gc2">
+        <!-- Game 2 -->
+        <div class="game-item">
           <div>
             <div class="game-header">
               <span class="game-tag">心理戦 × ナワバリ争い</span>
               <span class="game-specs">3〜6人 / 約15分</span>
             </div>
             <div class="game-title">テッペン (TEPPEN)</div>
-            <div class="game-catch">警察介入（バースト）を読み合うブラフ＆競りカードバトル</div>
+            <div class="game-catch">警察介入（バースト）を読み合うカードゲーム</div>
             <div class="game-desc">
-              手札から出す枚数を伏せて一斉オープン！現場に人数が集まりすぎると警察が介入（バースト）。「サツが来た！」と叫ぶタイミングと強気の駆け引きが鍵を握るストレートな競りゲーム。
+              手札から出す枚数を伏せて一斉に比べ、街のナワバリを獲得するゲーム。場に出たカードの総数が多すぎると警察が介入し、いち早く「サツが来た！」と宣言したプレイヤーが得点機会を得ます。
             </div>
           </div>
           <div class="game-point">
-            <strong>特徴：</strong> 15分でサクッと遊べて読み合いの盛り上がりが生まれるカジュアル対戦。
+            <strong>特徴：</strong> シンプルな数字の競り合いとバースト宣言のタイミングが鍵となる作品。
           </div>
         </div>
 
-        <!-- Game 3: プロンプト・スパイ -->
-        <div class="game-card gc3">
+        <!-- Game 3 -->
+        <div class="game-item">
           <div>
             <div class="game-header">
               <span class="game-tag">AI対話 × プロンプト学習</span>
               <span class="game-specs">3〜4人 / 約20分</span>
             </div>
             <div class="game-title">プロンプト・スパイ</div>
-            <div class="game-catch">AIオウムに工夫して語りかけ「秘密の暗号」を自白させろ！</div>
+            <div class="game-catch">AIオウムに話しかけて特定の言葉を自白させる</div>
             <div class="game-desc">
-              手札の単語をAI（Gemini等）に出力させる対話ゲーム。直接言うとNGルールのもと、状況説明や連想を工夫してプロンプト（指示文）を組み立てるコツを楽しく学べます。
+              手札の単語をAI（LLM）に出力させる対話ゲーム。単語を直接言うとNGとなるルールのもと、状況説明や連想を工夫してプロンプト（指示文）を組み立てるコツを学びます。
             </div>
           </div>
           <div class="game-point">
-            <strong>特徴：</strong> Webアプリデモと連携し、生成AIへの具体的な話しかけ方を体感。
+            <strong>特徴：</strong> 生成AIへの具体的な話しかけ方をゲーム感覚で体感できるプロトタイプ。
           </div>
         </div>
 
-        <!-- Game 4: キャリア・アイランド -->
-        <div class="game-card gc4">
+        <!-- Game 4 -->
+        <div class="game-item">
           <div>
             <div class="game-header">
-              <span class="game-tag">協力型 × キャリア理論(4L)</span>
+              <span class="game-tag">協力型 × キャリア理論</span>
               <span class="game-specs">4人 / 約30〜60分</span>
             </div>
             <div class="game-title">キャリア・アイランド</div>
-            <div class="game-catch">組織の目標と個人のキャリア・ウェルビーイングの両立</div>
+            <div class="game-catch">組織目標と個人のキャリアバランスを体験</div>
             <div class="game-desc">
-              ハンセンの4L理論（仕事・学び・余暇・愛）をモチーフにした協力型盤面ゲーム。個人の燃え尽き（バーンアウト）を防ぎつつ、チームの目標達成を全員で目指します。
+              ハンセンの4L理論（仕事・学び・余暇・愛）をモチーフにした協力型盤面ゲーム。盤面のトラブルを解決しつつ、個人の燃え尽きを防ぎながらチーム目標の達成を目指します。
             </div>
           </div>
           <div class="game-point">
-            <strong>特徴：</strong> プレイ後のデブリーフィング（対話）を通じて日常の働き方を振り返るシリアスゲーム。
+            <strong>特徴：</strong> 組織の目標達成と個人のウェルビーイングの調和を盤面でシミュレーション。
           </div>
         </div>
 
@@ -325,14 +275,15 @@
             <img src="https://quickchart.io/qr?text=https://note.com/tetsunosuke/n/n6d9602dc5bb5&size=80" alt="note記事QR">
             <span class="qr-label">制作note記事</span>
           </div>
-          <div class="footer-text">
-            <h3>当ブースにて全作品のプロトタイプを試遊いただけます！</h3>
-            <p>制作背景をまとめたnote記事の公開やアンケートも実施しております。<br>ご感想やフィードバックなど、ぜひお気軽にお寄せください！</p>
-          </div>
+        </div>
+        <div class="footer-info">
+          <h3>当ブースにて全作品のプロトタイプを試遊いただけます</h3>
+          <p>制作背景を綴ったnote記事やアンケートも実施しています。お気軽にお立ち寄りください。</p>
         </div>
       </footer>
 
     </div>
+
   </div>
 
 </body>
