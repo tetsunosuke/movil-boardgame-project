@@ -3,27 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>アナログゲーム出店 チラシポータル</title>
+  <title>アナログゲーム出店 印刷物・ルールブック・チラシ ポータル</title>
   <style>
     body {
       font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", MeiRy, sans-serif;
       background-color: #f8fafc;
       color: #0f172a;
-      max-width: 800px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 30px 20px;
       line-height: 1.6;
     }
     h1 {
-      font-size: 22px;
-      border-bottom: 2px solid #0f172a;
+      font-size: 24px;
+      border-bottom: 3px solid #0f172a;
       padding-bottom: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
-    p {
+    p.intro {
       font-size: 14px;
       color: #334155;
       margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 14px;
+      padding-left: 10px;
+      border-left: 4px solid #0f172a;
     }
     .grid {
       display: grid;
@@ -34,13 +41,8 @@
       background: #ffffff;
       border: 1px solid #cbd5e1;
       border-radius: 8px;
-      padding: 18px;
+      padding: 16px 18px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      transition: transform 0.1s ease;
-    }
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: #0f172a;
     }
     .card-tag {
       font-size: 11px;
@@ -58,72 +60,174 @@
       margin-bottom: 6px;
     }
     .card-desc {
-      font-size: 13px;
+      font-size: 12.5px;
       color: #64748b;
       margin-bottom: 14px;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .btn {
       display: inline-block;
       background: #0f172a;
       color: #ffffff;
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
-      padding: 8px 14px;
+      padding: 6px 12px;
       border-radius: 4px;
     }
-    .btn:hover {
-      background: #334155;
+    .btn:hover { background: #334155; }
+    .btn-outline {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #0f172a;
     }
+    .btn-outline:hover { background: #f1f5f9; }
   </style>
 </head>
 <body>
 
-  <h1>アナログゲーム出店 チラシ一覧（A4印刷対応）</h1>
-  <p>イベント展示・試遊会向けA4チラシ（モノクロ版）のWeb閲覧およびPDF印刷用ページです。<br>各リンクを開いて `Ctrl + P`（印刷）からPDF化またはプリントアウトが可能です。</p>
+  <h1>アナログゲーム出店 印刷物・ルールブック・チラシ ポータル</h1>
+  <p class="intro">
+    イベント展示・試遊会用のA4案内チラシ、各ゲームのルールブック、卓上マニュアル、カード印刷用データ（PDF/HTML）の一覧です。<br>
+    ブラウザでの閲覧、プリントアウト、または印刷用PDFの取得にご利用ください。
+  </p>
 
+  <!-- 1. 出店案内A4チラシ -->
+  <h2>📄 1. ブース案内 A4チラシ（手渡し・モノクロ印刷用）</h2>
   <div class="grid">
-
-    <!-- 全体版 -->
     <div class="card">
       <span class="card-tag">総合案内</span>
       <div class="card-title">4作品総合 A4チラシ</div>
-      <div class="card-desc">出展する4ゲームすべての特徴やスペックを1枚にまとめた手渡し用総合チラシ。</div>
-      <a href="flyer_all_games_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      <div class="card-desc">出展する4ゲームすべての概要を1枚にまとめた総合案内チラシ。</div>
+      <div class="btn-group">
+        <a href="flyer_all_games_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      </div>
     </div>
+    <div class="card">
+      <span class="card-tag">個別チラシ</span>
+      <div class="card-title">私の能力ランキング</div>
+      <div class="card-desc">自己評価と他者予想のギャップから対話が深まる6連単対話カードゲーム。</div>
+      <div class="btn-group">
+        <a href="flyer_my_ability_ranking_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-tag">個別チラシ</span>
+      <div class="card-title">テッペン (TEPPEN)</div>
+      <div class="card-desc">強気の出陣と警察介入（バースト）を読み合うブラフ＆競りカードゲーム。</div>
+      <div class="btn-group">
+        <a href="flyer_teppen_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-tag">個別チラシ</span>
+      <div class="card-title">プロンプト・スパイ</div>
+      <div class="card-desc">AIオウムに工夫して話しかけ、手札の暗号単語を出力させる対話ゲーム。</div>
+      <div class="btn-group">
+        <a href="flyer_ai_parrot_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-tag">個別チラシ</span>
+      <div class="card-title">キャリア・アイランド</div>
+      <div class="card-desc">ハンセンの4L理論をテーマに、組織目標と個人の幸せの両立を体験するゲーム。</div>
+      <div class="btn-group">
+        <a href="flyer_career_island_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ゲームルールブック＆卓上マニュアル -->
+  <h2>📘 2. ルールブック・卓上マニュアル（印刷用・閲覧用）</h2>
+  <div class="grid">
 
     <!-- 私の能力ランキング -->
     <div class="card">
-      <span class="card-tag">キャリア × 価値観</span>
-      <div class="card-title">私の能力ランキング</div>
-      <div class="card-desc">自己評価と他者予想のギャップから対話が深まる6連単対話カードゲーム。</div>
-      <a href="flyer_my_ability_ranking_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      <span class="card-tag">私の能力ランキング</span>
+      <div class="card-title">ルール説明書・配布マニュアル</div>
+      <div class="card-desc">ルールブック（A4 4ページ）、卓上サマリーマニュアル、能力一覧表。</div>
+      <div class="btn-group">
+        <a href="rules.html" class="btn" target="_blank">ルールHTML</a>
+        <a href="私の能力ランキング_ルール説明書_v8.pdf" class="btn btn-outline" target="_blank">ルールPDF</a>
+        <a href="私の能力ランキング_配布用マニュアル_v8.pdf" class="btn btn-outline" target="_blank">卓上マニュアルPDF</a>
+        <a href="私の能力ランキング_能力一覧表_v8.pdf" class="btn btn-outline" target="_blank">能力一覧表PDF</a>
+      </div>
     </div>
 
     <!-- テッペン -->
     <div class="card">
-      <span class="card-tag">心理戦 × ナワバリ</span>
-      <div class="card-title">テッペン (TEPPEN)</div>
-      <div class="card-desc">強気の出陣と警察の介入（バースト）を読み合うブラフ＆競りカードゲーム。</div>
-      <a href="flyer_teppen_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      <span class="card-tag">テッペン</span>
+      <div class="card-title">A4ルールブック</div>
+      <div class="card-desc">A4一枚に収まる折りたたみ対応ルールブック。</div>
+      <div class="btn-group">
+        <a href="teppen-rulebook-a4.html" class="btn" target="_blank">ルールHTML</a>
+        <a href="teppen-rulebook-a4.pdf" class="btn btn-outline" target="_blank">ルールPDF</a>
+      </div>
     </div>
 
     <!-- プロンプト・スパイ -->
     <div class="card">
-      <span class="card-tag">AI対話 × プロンプト学習</span>
-      <div class="card-title">プロンプト・スパイ</div>
-      <div class="card-desc">AIオウムに工夫して話しかけ、手札の「秘密単語」を出力させる対話ゲーム。</div>
-      <a href="flyer_ai_parrot_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      <span class="card-tag">プロンプト・スパイ</span>
+      <div class="card-title">公式ルール説明書</div>
+      <div class="card-desc">塗り足し3mm対応の印刷用公式ルールブック。</div>
+      <div class="btn-group">
+        <a href="ai-parrot-manual.html" class="btn" target="_blank">ルールHTML</a>
+        <a href="ai-parrot-manual.pdf" class="btn btn-outline" target="_blank">ルールPDF</a>
+      </div>
     </div>
 
     <!-- キャリア・アイランド -->
     <div class="card">
-      <span class="card-tag">協力型 × キャリア理論</span>
-      <div class="card-title">キャリア・アイランド</div>
-      <div class="card-desc">ハンセンの4L理論をテーマに、組織目標と個人の幸せの両立を体験するゲーム。</div>
-      <a href="flyer_career_island_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+      <span class="card-tag">キャリア・アイランド</span>
+      <div class="card-title">ルールブック</div>
+      <div class="card-desc">協力盤面メカニクス＆デブリーフィングガイド付きルールブック。</div>
+      <div class="btn-group">
+        <a href="career-island-rulebook.html" class="btn" target="_blank">ルールHTML</a>
+        <a href="RULEBOOK.pdf" class="btn btn-outline" target="_blank">ルールPDF</a>
+      </div>
     </div>
 
+  </div>
+
+  <!-- 3. コンポーネント・カード印刷データ -->
+  <h2>🃏 3. カード・コンポーネント印刷データ（PDF）</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="card-tag">カードデータ</span>
+      <div class="card-title">私の能力ランキング カード面付けデータ</div>
+      <div class="card-desc">全120枚（9面付け）プロトタイプ印刷用PDF。</div>
+      <div class="btn-group">
+        <a href="私の能力ランキング_カード印刷データ_v8.pdf" class="btn btn-outline" target="_blank">カードデータPDF</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-tag">カードデータ</span>
+      <div class="card-title">テッペン カード印刷データ</div>
+      <div class="card-desc">手下カード・ナワバリカード印刷用PDF。</div>
+      <div class="btn-group">
+        <a href="teppen-cards.pdf" class="btn btn-outline" target="_blank">カードデータPDF</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-tag">カードデータ</span>
+      <div class="card-title">プロンプト・スパイ カード印刷データ</div>
+      <div class="card-desc">ワードカード・ジャンルカード印刷用PDF。</div>
+      <div class="btn-group">
+        <a href="ai-parrot-cards.pdf" class="btn btn-outline" target="_blank">カードデータPDF</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-tag">カードデータ</span>
+      <div class="card-title">キャリア・アイランド カード印刷データ</div>
+      <div class="card-desc">イベント・役職・トラブル各種カード印刷用PDF。</div>
+      <div class="btn-group">
+        <a href="career-island-cards.pdf" class="btn btn-outline" target="_blank">カードデータPDF</a>
+      </div>
+    </div>
   </div>
 
 </body>

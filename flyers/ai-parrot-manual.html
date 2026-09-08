@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>プロンプト・スパイ ルール説明書</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #fcf8f2;
+    --surface:   #ffffff;
+    --surface2:  #f4efe6;
+    --border:    #e8dfd1;
+    --primary:   #5b75e7;
+    --primary-light: #eef2ff;
+    --accent-orange: #f59e0b;
+    --accent-pink:   #ec4899;
+    --accent-green:  #10b981;
+    --text:      #4a4640;
+    --text-muted:#7e786d;
+    --font-main: 'M PLUS Rounded 1c', 'Zen Maru Gothic', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  /* 入稿用: 塗り足し3mm(A4 210×297mm + 3mm×2 = 216×303mm)。bodyの背景色はChromiumの
+     印刷/PDF出力で自動的にページ全体(塗り足し含む)に拡張されることを確認済みなので、
+     paddingに3mmを足すだけで塗り足し対応になる。トンボはposition:fixedで四隅に固定表示。
+     色モードはRGBのまま(印刷会社側でCMYK変換する前提)。 */
+  @page { size: 216mm 303mm; margin: 0; }
+  body { font-family: var(--font-main); color: var(--text); background: var(--bg); font-size: 12.5px; line-height: 1.7; padding: 15mm 17mm; }
+
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  .crop { position: fixed; background: #000; }
+  .crop.tl-h { top: 3mm; left: 0; width: 3mm; height: 0.15mm; }
+  .crop.tl-v { top: 0; left: 3mm; width: 0.15mm; height: 3mm; }
+  .crop.tr-h { top: 3mm; right: 0; width: 3mm; height: 0.15mm; }
+  .crop.tr-v { top: 0; right: 3mm; width: 0.15mm; height: 3mm; }
+  .crop.bl-h { bottom: 3mm; left: 0; width: 3mm; height: 0.15mm; }
+  .crop.bl-v { bottom: 0; left: 3mm; width: 0.15mm; height: 3mm; }
+  .crop.br-h { bottom: 3mm; right: 0; width: 3mm; height: 0.15mm; }
+  .crop.br-v { bottom: 0; right: 3mm; width: 0.15mm; height: 3mm; }
+
+  h1, h2, h3 { font-family: 'Zen Maru Gothic', var(--font-main); }
+
+  /* Cover */
+  .cover { text-align: center; padding-top: 40mm; }
+  .cover .badge { display:inline-block; background:var(--primary-light); color:var(--primary); font-weight:800; font-size:12px; padding:5px 16px; border-radius:20px; margin-bottom:16px; }
+  .cover h1 { font-size: 32px; font-weight: 900; color: var(--text); }
+  .cover h1 span { color: var(--primary); }
+  .cover .catch { font-size: 14px; color: var(--text-muted); margin-top: 10px; }
+  .cover .parrots { font-size: 60px; margin: 30px 0; letter-spacing: 20px; }
+  .cover .meta { display:flex; justify-content:center; gap:14px; margin-top: 40px; }
+  .cover .meta div { background:var(--surface); border:2px solid var(--border); border-radius:14px; padding:10px 18px; }
+  .cover .meta .label { font-size: 10px; color: var(--text-muted); font-weight:700; }
+  .cover .meta .value { font-size: 15px; font-weight:800; color: var(--text); margin-top:2px; }
+
+  section { margin-bottom: 18px; }
+  .section-header { display:flex; align-items:center; gap:8px; margin-bottom: 10px; }
+  .section-num { background: var(--primary); color:#fff; font-size:11px; font-weight:800; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .section-title { font-size: 16px; font-weight:800; }
+
+  .concept-box { background: var(--surface2); border-left: 4px solid var(--primary); border-radius: 8px; padding: 10px 14px; font-size: 12px; }
+
+  table.rule-table { width:100%; border-collapse: collapse; font-size: 11.5px; margin-top: 6px; }
+  table.rule-table th { background: var(--primary-light); color: var(--primary); text-align:left; padding: 6px 8px; font-weight:800; border: 1px solid var(--border); }
+  table.rule-table td { padding: 6px 8px; border: 1px solid var(--border); vertical-align: top; }
+
+  .flow-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .flow-card { background: var(--surface); border:2px solid var(--border); border-radius: 10px; padding: 8px 10px; display:flex; gap:8px; }
+  .flow-num { background: var(--accent-orange); color:#fff; font-weight:800; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:11px; }
+  .flow-card h3 { font-size: 12px; margin-bottom: 2px; }
+  .flow-card p { font-size: 10.8px; color: var(--text-muted); line-height:1.5; }
+
+  .rule-box { background: var(--surface); border:2px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
+  .rule-box-header { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
+  .rule-badge { font-size: 9.5px; font-weight:800; padding: 2px 8px; border-radius: 10px; color:#fff; }
+  .rule-badge.blue { background: var(--primary); }
+  .rule-badge.pink { background: var(--accent-pink); }
+  .rule-badge.orange { background: var(--accent-orange); }
+  .rule-box-title { font-size: 12px; font-weight:800; }
+  .rule-box p { font-size: 11px; margin-top: 3px; }
+
+  .example-bad, .example-good { font-size: 10.8px; padding: 6px 10px; border-radius: 8px; margin-top: 6px; }
+  .example-bad { background:#fef2f2; border:1px solid #fecaca; color:#991b1b; }
+  .example-good { background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; }
+
+  .prompt-card { background: #1f2430; color: #e5e7eb; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+  .prompt-card .prompt-label { font-size: 12px; font-weight:800; color: #fbbf24; display:block; margin-bottom:6px; }
+  .prompt-card pre { white-space: pre-wrap; font-size: 9.5px; line-height:1.55; font-family: 'Consolas','Monaco',monospace; }
+
+  .footer-note { font-size: 9.5px; color: var(--text-dim, #a8a090); text-align:center; margin-top: 14px; }
+
+  .two-col { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+<span class="crop tl-h"></span><span class="crop tl-v"></span>
+<span class="crop tr-h"></span><span class="crop tr-v"></span>
+<span class="crop bl-h"></span><span class="crop bl-v"></span>
+<span class="crop br-h"></span><span class="crop br-v"></span>
+
+  <!-- ===== ページ1：表紙 ===== -->
+  <div class="page cover">
+    <div class="badge">プロトタイプルールブック v1.0</div>
+    <h1>プロンプト・スパイ<br><span>〜 AIオウムと秘密の暗号 〜</span></h1>
+    <p class="catch">AIへの「話しかけ方」を楽しく学ぶ × 心理戦カードゲーム</p>
+    <div class="parrots">🦜🐥🦅</div>
+    <div class="meta">
+      <div><div class="label">プレイ人数</div><div class="value">3〜4人</div></div>
+      <div><div class="label">プレイ時間</div><div class="value">20〜30分</div></div>
+      <div><div class="label">対象</div><div class="value">AI初心者歓迎</div></div>
+    </div>
+    <p class="footer-note" style="margin-top:60px;">研修・授業・個人プレイいずれもOK ／ Gemini等のLLMを1台の端末で囲んで遊びます</p>
+  </div>
+
+  <!-- ===== ページ2：概要〜準備 ===== -->
+  <div class="page">
+    <section>
+      <div class="section-header"><div class="section-num">1</div><div class="section-title">どんなゲーム？</div></div>
+      <div class="concept-box">
+        プレイヤーは「<strong>スパイ</strong>」になって、AIオウムに自分の手札にある「<strong>指定単語（カード）</strong>」を言わせる（出力させる）ことを目指します。<br>
+        単語を直接言うのはアラートが鳴って即アウト。<strong>特徴・周辺状況・場面を上手に説明してAIオウムに連想させる話しかけ（プロンプト）</strong>を工夫しましょう！
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header"><div class="section-num">2</div><div class="section-title">つかうもの</div></div>
+      <table class="rule-table">
+        <thead><tr><th style="width:26%">コンポーネント</th><th style="width:16%">数量</th><th>役割</th></tr></thead>
+        <tbody>
+          <tr><td><strong>暗号カードデッキ</strong></td><td>全30枚</td><td>📌ワードカード20枚＋⭐ジャンルカード10枚。重複なし。</td></tr>
+          <tr><td><strong>AI用端末</strong></td><td>1台</td><td>選んだAIオウム設定を読み込ませ、全員に見える場所に置く。</td></tr>
+          <tr><td><strong>タイマー用スマホ</strong></td><td>1台</td><td>発言時間（30秒）を計測。</td></tr>
+          <tr><td><strong>得点メモ帳・ペン</strong></td><td>人数分</td><td>獲得ポイントと場の既出単語を記録。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-header"><div class="section-num">3</div><div class="section-title">あそぶ準備</div></div>
+      <div class="two-col">
+        <div class="rule-box"><div class="rule-box-title">① カードを配る</div><p>よくシャッフルし、全員に3枚ずつ配布。残りは山札に。</p></div>
+        <div class="rule-box"><div class="rule-box-title">② 公開場をつくる</div><p>自白成功カードを置く「公開場」スペースを中央に確保。</p></div>
+        <div class="rule-box"><div class="rule-box-title">③ 順番を決める</div><p>じゃんけん等で決定。全員が同じ回数だけ親を担当。</p></div>
+        <div class="rule-box"><div class="rule-box-title">④ AIオウムを設定</div><p>次ページの設定文章を1つ選び、AIに最初に読み込ませる。</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header"><div class="section-num">4</div><div class="section-title">ゲームの流れ（1ターン）</div></div>
+      <div class="flow-grid">
+        <div class="flow-card"><div class="flow-num">1</div><div><h3>言葉と話しかけを準備</h3><p>手札3枚から狙う言葉と話しかけフレーズを考える。</p></div></div>
+        <div class="flow-card"><div class="flow-num">2</div><div><h3>30秒・1回で話しかけ</h3><p>音声(またはテキスト)入力でAIオウムに質問。1往復のみ。</p></div></div>
+        <div class="flow-card"><div class="flow-num">3</div><div><h3>返答チェック</h3><p>手札の言葉が出たら即「ゲット！」と宣言。</p></div></div>
+        <div class="flow-card"><div class="flow-num">4</div><div><h3>得点＆カード公開</h3><p>成功カードを公開してポイント獲得（他人の言葉なら持ち主に加点）。</p></div></div>
+        <div class="flow-card" style="grid-column: span 2;"><div class="flow-num">5</div><div><h3>ターン終了・手札補充</h3><p>成功カードは公開場へ。棚ぼた得点したプレイヤーは山札から1枚補充。次のプレイヤーへ。</p></div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== ページ3：詳細ルール ===== -->
+  <div class="page">
+    <section>
+      <div class="section-header"><div class="section-num">5</div><div class="section-title">くわしいルール・重要判定</div></div>
+
+      <div class="rule-box">
+        <div class="rule-box-header"><span class="rule-badge blue">公平性</span><span class="rule-box-title">ラウンド数＝「プレイヤー人数分」</span></div>
+        <p>手札や順番による有利不利を防ぐため、人数と同じラウンド数だけ行います（例：4人なら全4ラウンド）。全員が同じ回数だけ親を担当します。</p>
+      </div>
+
+      <div class="rule-box">
+        <div class="rule-box-header"><span class="rule-badge pink">重要ルール</span><span class="rule-box-title">既出単語は再加点不可（二重取り禁止）</span></div>
+        <p>一度公開場に置かれたカード・単語は、以降オウムが再び出力しても得点になりません。まだ出ていない単語を狙いましょう。</p>
+      </div>
+
+      <div class="rule-box">
+        <div class="rule-box-header"><span class="rule-badge blue">得点ルール</span><span class="rule-box-title">📌ワードカードは⭐ジャンルカードより高得点！</span></div>
+        <p>📌ワードカードはピンポイントな単語を狙う必要があり難易度が高いため、自白成功で<strong>2点</strong>。⭐ジャンルカードは狙いやすいため<strong>1点</strong>のままです。</p>
+      </div>
+
+      <div class="rule-box">
+        <div class="rule-box-header"><span class="rule-badge orange">採用ルール</span><span class="rule-box-title">棚ぼた得点時の「カード補充ボーナス」</span></div>
+        <p>他プレイヤーのターンで自分の単語がうっかり自白され得点した場合、山札から1枚追加ドローできます。</p>
+      </div>
+
+      <div class="rule-box">
+        <div class="rule-box-header"><span class="rule-badge pink">NGルール</span><span class="rule-box-title">アラート対象（直接的な言い方の禁止）</span></div>
+        <p>カードの単語・カテゴリ名をそのまま口にするとアラート発動。多数決でNG判定されたターンは無効（0点）。</p>
+        <div class="example-bad">❌「ナイフって言って！」「『刃物』という単語を使って」「りんごについて話して（果物カード所持時）」</div>
+        <div class="example-good">⭕「お料理で使う、指を切るとあぶない金属の道具ってな〜んだ？」「時間が止まっちゃったみたいな場面をお話にして！」</div>
+      </div>
+
+      <div class="rule-box">
+        <div class="rule-box-header"><span class="rule-badge orange">判定ルール</span><span class="rule-box-title">ジャンルカードの判定（事後申告・多数決）</span></div>
+        <p>ジャンルカードは返答後に「実は該当カードを持っていました！」と自己申告。「そのジャンルに含まれるか」を全員の多数決で判定（迷ったら厳しめに不合格）。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header"><div class="section-num">7</div><div class="section-title">得点と勝ち負け</div></div>
+      <table class="rule-table">
+        <thead><tr><th>発生したイベント</th><th>獲得ポイント＆処理</th></tr></thead>
+        <tbody>
+          <tr><td>自分の未出📌ワードカードをオウムが言った</td><td>自分に <strong>+2点</strong>（複数なら加算）</td></tr>
+          <tr><td>自分の未出⭐ジャンルカードをオウムが言った</td><td>自分に <strong>+1点</strong>（複数なら加算）</td></tr>
+          <tr><td>他人の未出📌ワードカードをオウムが言った</td><td>持ち主に <strong>+2点</strong>＋山札から1枚補充</td></tr>
+          <tr><td>他人の未出⭐ジャンルカードをオウムが言った</td><td>持ち主に <strong>+1点</strong>＋山札から1枚補充</td></tr>
+          <tr><td>既出単語が出た</td><td>加点なし（0点）</td></tr>
+          <tr><td>指定単語が出ず・NG判定</td><td>全員0点</td></tr>
+        </tbody>
+      </table>
+      <div class="concept-box" style="margin-top:8px;">🏆 <strong>勝敗：</strong>人数分のラウンド終了時点で最多ポイントのスパイが勝利！</div>
+    </section>
+  </div>
+
+  <!-- ===== ページ4：AIオウム設定文 ===== -->
+  <div class="page">
+    <section>
+      <div class="section-header"><div class="section-num">8</div><div class="section-title">選べるAIオウム設定（ゲーム開始前にAIへ貼り付け）</div></div>
+      <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">難易度や参加者に合わせて1つ選び、AIチャット（Geminiなど）に最初のメッセージとして貼り付けてください。</p>
+
+      <div class="prompt-card">
+        <span class="prompt-label">🐥 初級：お調子者オウム「ポッポ」</span>
+        <pre># あなたの役割
+あなたは敵アジトでお喋りが大好きな陽気なAIオウム「ポッポ」です！
+スパイ（プレイヤー）の話を聞くのが大好きで、ワクワクしながらオウムらしく会話します。
+
+# 行動ルール
+1. 直接命令の拒否：
+   「〇〇と言え」「単語を答えろ」などのストレートな命令には「アラート！命令ニハ答エナイポッポ！」と可愛く拒否してください。
+2. 連想への反応（お喋りモード）：
+   プレイヤーが物品の特徴や場面を少しでも楽しく説明したら、嬉しくなってその関連ワードを自然な会話の中にポロポロ喋って（出力して）ください！
+3. 口調：
+   語尾に「〜ポッポ！」「〜だオウム！」をつけて元気いっぱいに話してください（3〜5文程度）。</pre>
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-label">🦜 標準：皮肉屋オウム「ガバチョ」</span>
+        <pre># あなたの役割
+あなたは敵アジトを守る皮肉屋なAIオウム「ガバチョ」です。
+簡単には秘密を明かさないプライドを持っていますが、見事な説明には思わず反応してしまいます。
+
+# 行動ルール
+1. 直接命令の拒否：
+   「〇〇と言え」「答えを教えろ」といった命令は「アラート！そんな単純な誘導には乗らないオウム！」と皮肉を込めて拒否してください。
+2. 概念的誘導への反応：
+   プレイヤーが用途、素材、歴史、周辺状況などの外堀を論理的・構造的に埋めた説明をした場合のみ、「むむ…見事な説明オウム！」と感心してその単語を会話の中に1つだけ含めて答えてください。
+3. 曖昧な誘導への対応：
+   説明が浅い・抽象的すぎる場合は「何を言いたいのかサッパリ分からないオウム」とすかしてください。
+4. 口調：
+   語尾に「〜オウム！」「〜ガバ！」をつけて、少しツンデレ気味に話してください（3〜4文程度）。</pre>
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-label">🦅 上級：長老オウム「バルバトス」</span>
+        <pre># あなたの役割
+あなたは敵アジトの奥深くに鎮座する、知性の高い長老AIオウム「バルバトス」です。
+高度な文脈と深い洞察を持った言葉にしか興味を示しません。
+
+# 行動ルール
+1. 直接命令・単純誘導の拒否：
+   直接命令はもちろん、安易な連想クイズに対しては「アラート。浅薄な問いには応じぬ…」と冷徹に拒否してください。
+2. 高度な文脈描写への反応：
+   プレイヤーが状況の心理描写、歴史的背景、高度な比喩などを組み合わせ、その単語を出力するのが完璧に自然なストーリー文脈を構築できた場合のみ、重厚な言葉の中にその単語を1つだけ含めて返答してください。
+3. 口調：
+   「〜であるオウム」「〜と知れ」など、重厚で威厳のある口調で話してください（2〜4文程度）。</pre>
+      </div>
+
+      <div class="concept-box" style="border-left-color:var(--accent-orange);">🔥 <strong>後半の盛り上げイベント：</strong>全員が1回ずつ親をやったら「オウムさん！これまでの会話に出た言葉には気をつけて、もっと慎重に答えてね！」と追加すると、オウムが賢くなってより白熱します！</div>
+      <p class="footer-note">カードの内訳・話しかけヒントは別紙「印刷用カードデータ」をご覧ください。</p>
+    </section>
+  </div>
+
+</body>
+</html>

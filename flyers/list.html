@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<title>能力一覧表</title><style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans CJK JP", sans-serif; color: #111;
+       -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 10mm 12mm 7mm; display: flex; flex-direction: column; }
+
+.head { display: flex; align-items: flex-end; justify-content: space-between;
+        border-bottom: 1.1mm solid #111; padding-bottom: 2mm; }
+.head h1 { font-size: 18pt; letter-spacing: .03em; }
+.head .sub { font-size: 8.5pt; color: #555; letter-spacing: .05em; text-align: right; line-height: 1.5; }
+.lead { font-size: 8.5pt; color: #333; margin-top: 1.8mm; line-height: 1.5; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 2.2mm; }
+th, td { border: 0.25mm solid #aaa; padding: 0.85mm 2.2mm; vertical-align: middle; line-height: 1.4; }
+thead th { background: #111; color: #fff; font-size: 8pt; letter-spacing: .1em; text-align: left;
+           padding: 1.3mm 2.2mm; }
+.sec td { background: #111; color: #fff; font-size: 8.4pt; font-weight: 700; letter-spacing: .08em;
+          padding: 1.2mm 2.2mm; border-color: #111; }
+.sec td span { font-weight: 400; color: #b9c0c5; font-size: 7.4pt; margin-left: 2.5mm; letter-spacing: .02em; }
+.no { width: 15mm; text-align: center; font-size: 8.6pt; font-weight: 700; letter-spacing: .04em; }
+.nm { width: 43mm; font-size: 8.8pt; font-weight: 700; }
+.df { font-size: 8.1pt; color: #333; }
+tbody tr:nth-child(even of :not(.sec)) .no,
+tbody tr:nth-child(even of :not(.sec)) .nm,
+tbody tr:nth-child(even of :not(.sec)) .df { background: #f4f4f4; }
+
+.legend { margin-top: 2.4mm; display: grid; grid-template-columns: 1fr 1.15fr; gap: 5mm; }
+h2 { font-size: 9.5pt; letter-spacing: .06em; border-bottom: 0.5mm solid #111;
+     padding-bottom: 1.1mm; margin-bottom: 1.8mm; }
+.symrow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.6mm; }
+.symcell { border: 0.3mm solid #111; padding: 1.2mm 0.5mm 1mm; text-align: center; }
+.symcell .d { font-size: 15pt; font-weight: 700; line-height: 1.1; }
+.symcell .c { font-size: 7.4pt; font-weight: 700; margin-top: 0.3mm; }
+.tier { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.6mm; }
+.tier div { font-size: 7.6pt; white-space: nowrap; border: 0.25mm solid #999; padding: 1.4mm 1.2mm; }
+.tier b { display: inline-block; background: #111; color: #fff; width: 4mm; text-align: center;
+          margin-right: 1.2mm; font-size: 7.2pt; }
+.note { font-size: 7.4pt; color: #555; margin-top: 1.6mm; line-height: 1.5; }
+
+.foot { margin-top: auto; padding-top: 2mm; border-top: 0.25mm solid #ccc;
+        display: flex; justify-content: space-between; font-size: 7.5pt; color: #888; }
+</style></head><body>
+<div class="page">
+
+<div class="head">
+<h1>能力一覧表</h1>
+<div class="sub">自己発見ゲーム「私の能力ランキング」<br>全30枚／プレイヤー全員に1枚</div>
+</div>
+
+<div class="lead">能力カード30枚の全リストです。場に出た6枚の意味を確認したいときに使ってください。カード右上の番号（<strong>No.01〜No.30</strong>）がこの表と対応しています。30枚の通し番号なので、山の区別は帯の色（黒＝社会人基礎力／白＝その他）で見てください。</div>
+
+<table>
+<thead><tr><th class="no" style="text-align:center">番号</th><th class="nm">能力</th><th>定義</th></tr></thead>
+<tbody><tr class="sec"><td colspan="3">社会人基礎力<span>No.01〜No.12／カードの帯は黒地</span></td></tr><tr><td class="no">No.01</td><td class="nm">主体性</td><td class="df">自ら考え、周囲に依存せずに行動を起こす姿勢</td></tr><tr><td class="no">No.02</td><td class="nm">働きかけ力</td><td class="df">周囲の協力や理解を得るために積極的にアプローチする力</td></tr><tr><td class="no">No.03</td><td class="nm">実行力</td><td class="df">決めたことを最後までやり遂げ、結果につなげる力</td></tr><tr><td class="no">No.04</td><td class="nm">課題発見力</td><td class="df">現状を分析し、改善すべき点や潜在的な問題を見抜く力</td></tr><tr><td class="no">No.05</td><td class="nm">計画力</td><td class="df">目標に向けてタスクを分解し、期限を守って遂行する力</td></tr><tr><td class="no">No.06</td><td class="nm">創造力</td><td class="df">新しいアイデアを発想し、従来にない解決策を考える力</td></tr><tr><td class="no">No.07</td><td class="nm">発信力</td><td class="df">必要な情報や意見を、適切なタイミングで共有する力</td></tr><tr><td class="no">No.08</td><td class="nm">傾聴力</td><td class="df">相手の話を注意深く聞き、意図や背景を理解する力</td></tr><tr><td class="no">No.09</td><td class="nm">柔軟性</td><td class="df">変化や予期せぬ状況に適応し、前向きに対応する力</td></tr><tr><td class="no">No.10</td><td class="nm">情況把握力</td><td class="df">周囲の状況や背景を読み取り、適切に判断・行動する力</td></tr><tr><td class="no">No.11</td><td class="nm">規律性</td><td class="df">ルールや約束を守り、組織の一員として行動する力</td></tr><tr><td class="no">No.12</td><td class="nm">ストレスコントロール力</td><td class="df">緊張や負荷の高い状況でも冷静に対処する力</td></tr><tr class="sec"><td colspan="3">その他の能力<span>No.13〜No.30／カードの帯は白地</span></td></tr><tr><td class="no">No.13</td><td class="nm">ビジネスマナー</td><td class="df">挨拶・言葉遣い・身だしなみなど、社会人としての基本</td></tr><tr><td class="no">No.14</td><td class="nm">文章作成力</td><td class="df">メール、議事録、報告書を正確かつ分かりやすくまとめる力</td></tr><tr><td class="no">No.15</td><td class="nm">情報整理力</td><td class="df">メモ・ノート・データを構造的に整理し、必要なときに活用できる力</td></tr><tr><td class="no">No.16</td><td class="nm">基本的なPCスキル</td><td class="df">Word、Excel、PowerPointなどの操作力</td></tr><tr><td class="no">No.17</td><td class="nm">論理的思考力</td><td class="df">物事を筋道立てて整理し、合理的に説明・判断する力</td></tr><tr><td class="no">No.18</td><td class="nm">PDCAサイクル実践力</td><td class="df">計画・実行・振り返り・改善を回して成果を高める力</td></tr><tr><td class="no">No.19</td><td class="nm">チームワーク</td><td class="df">役割分担を理解し、協力して成果を出す力</td></tr><tr><td class="no">No.20</td><td class="nm">説明力・プレゼン力</td><td class="df">自分の考えをわかりやすく伝え、納得感を得る力</td></tr><tr><td class="no">No.21</td><td class="nm">対人調整力</td><td class="df">異なる立場や利害を持つ人の間で合意形成を図る力</td></tr><tr><td class="no">No.22</td><td class="nm">交渉力</td><td class="df">双方にとって納得感のある妥協点や解決策を導く力</td></tr><tr><td class="no">No.23</td><td class="nm">巻き込み力</td><td class="df">関係者を動かし、協力体制を築く力</td></tr><tr><td class="no">No.24</td><td class="nm">信頼関係構築力</td><td class="df">誠実さや一貫性によって、相手から信頼を得る力</td></tr><tr><td class="no">No.25</td><td class="nm">セルフマネジメント</td><td class="df">自分の行動や感情をコントロールし、安定して成果を出す力</td></tr><tr><td class="no">No.26</td><td class="nm">フィードバック受容力</td><td class="df">指摘や助言を前向きに受け止め、成長につなげる力</td></tr><tr><td class="no">No.27</td><td class="nm">自己学習力</td><td class="df">新しい知識やスキルを学び、自己成長を継続する力</td></tr><tr><td class="no">No.28</td><td class="nm">責任感</td><td class="df">成果・品質・納期に責任を持ち、やり抜く姿勢</td></tr><tr><td class="no">No.29</td><td class="nm">挑戦する姿勢</td><td class="df">失敗を恐れず、新しいことに積極的に取り組む力</td></tr><tr><td class="no">No.30</td><td class="nm">データ活用力</td><td class="df">数値や事実をもとに、根拠のある判断を行う力</td></tr></tbody>
+</table>
+
+<div class="legend">
+<div>
+<h2>番号カード（1〜6・枠番の色）</h2>
+<div class="symrow"><div class="symcell"><div class="d">1</div><div class="c">白</div></div><div class="symcell"><div class="d">2</div><div class="c">黒</div></div><div class="symcell"><div class="d">3</div><div class="c">赤</div></div><div class="symcell"><div class="d">4</div><div class="c">青</div></div><div class="symcell"><div class="d">5</div><div class="c">黄</div></div><div class="symcell"><div class="d">6</div><div class="c">緑</div></div></div>
+<div class="note">色は<strong>競馬の枠番</strong>と同じです。場では<strong>カラーの場用セット</strong>を1〜6の順に固定し、その下に能力カードを置きます。手元のカードは白黒の数字だけで、自分の予想着順を並べるのに使います。</div>
+</div>
+<div>
+<h2>自信度カードの序列</h2>
+<div class="tier">
+<div><b>S</b>最も自信</div><div><b>A</b>自信あり</div><div><b>B</b>そこそこ</div><div><b>C</b>これから</div>
+</div>
+<div class="note">各段階3枚ずつ（S1〜C3）の計12枚。同じ段階なら番号が小さいほど上位です。親はこの12枚から6枚を選んで各能力に割り当てます。</div>
+</div>
+</div>
+
+<div class="foot"><span>自己発見ゲーム「私の能力ランキング」｜能力一覧表</span><span>1 / 1</span></div>
+</div>
+</body></html>

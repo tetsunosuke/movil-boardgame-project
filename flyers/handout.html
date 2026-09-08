@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<title>各ターンでやること</title><style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans CJK JP", sans-serif; color: #111; -webkit-print-color-adjust: exact;
+       print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 10mm 12mm 7mm; display: flex; flex-direction: column; }
+
+.head { display: flex; align-items: flex-end; justify-content: space-between;
+        border-bottom: 1.1mm solid #111; padding-bottom: 2mm; }
+.head h1 { font-size: 18pt; letter-spacing: .03em; }
+.head .sub { font-size: 8.5pt; color: #555; letter-spacing: .05em; text-align: right; line-height: 1.5; }
+
+.lead { font-size: 8.5pt; color: #333; margin-top: 1.8mm; line-height: 1.5; }
+
+.steps { width: 100%; border-collapse: collapse; margin-top: 2.2mm; }
+.steps th, .steps td { border: 0.25mm solid #999; padding: 1.25mm 2.2mm; vertical-align: top; }
+.steps thead th { background: #111; color: #fff; font-size: 8.5pt; letter-spacing: .1em;
+                  text-align: center; padding: 1.4mm 0; }
+.steps .sc { width: 46mm; }
+.steps .num { display: inline-flex; width: 5.6mm; height: 5.6mm; border-radius: 50%; background: #111;
+              color: #fff; font-size: 8.5pt; font-weight: 700; align-items: center;
+              justify-content: center; margin-right: 1.8mm; vertical-align: 1mm; }
+.steps .t { font-size: 10pt; font-weight: 700; letter-spacing: .01em; }
+.steps .min { font-size: 7pt; border: 0.3mm solid #111; padding: 0.3mm 1.4mm; margin-left: 1.5mm;
+              letter-spacing: .04em; white-space: nowrap; }
+.steps p { font-size: 8.4pt; line-height: 1.5; }
+.steps .note { font-size: 7.4pt; color: #555; line-height: 1.45; margin-top: 1mm;
+               padding-top: 1mm; border-top: 0.2mm dotted #bbb; }
+.steps .warn { font-size: 7.8pt; margin-top: 1mm; font-weight: 700; }
+
+.bottom { margin-top: 2.4mm; display: grid; grid-template-columns: 1.35fr 1fr; gap: 5mm; }
+h2 { font-size: 10pt; letter-spacing: .06em; border-bottom: 0.5mm solid #111;
+     padding-bottom: 1.2mm; margin-bottom: 2mm; }
+.figcap { font-size: 7.3pt; font-weight: 700; color: #333; margin-top: 1.5mm; }
+.figrow { display: grid; grid-template-columns: 21mm repeat(6, 1fr); gap: 1.1mm; margin-top: 0.9mm; }
+.figlabel { font-size: 6.6pt; color: #444; align-self: center; line-height: 1.3; }
+.figlabel span { color: #999; }
+.figcell { border: 0.3mm solid #111; text-align: center; font-size: 7.2pt; padding: 0.95mm 0.3mm; }
+.figcell.k { background: #111; color: #fff; }
+.figcell.b { background: repeating-linear-gradient(45deg, #111 0 0.2mm, #fff 0.2mm 2.4mm); color: #111; }
+.tier { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.2mm 1.5mm; }
+.tier div { font-size: 7.6pt; white-space: nowrap; border: 0.25mm solid #999; padding: 1.1mm 1.2mm; }
+.tier b { display: inline-block; background: #111; color: #fff; width: 4mm;
+          text-align: center; margin-right: 1.2mm; font-size: 7.2pt; }
+.fignote { font-size: 7.4pt; color: #555; margin-top: 1.4mm; line-height: 1.5; }
+
+table { width: 100%; border-collapse: collapse; }
+td, th { border: 0.25mm solid #999; padding: 1.2mm 2mm; font-size: 8.1pt; text-align: left;
+         vertical-align: top; line-height: 1.5; }
+th { background: #f0f0f0; font-weight: 700; white-space: nowrap; }
+.c { text-align: center; white-space: nowrap; }
+
+.tips { margin-top: 2.4mm; border: 0.4mm solid #111; padding: 1.8mm 3mm; }
+.tips .th { font-size: 8.5pt; font-weight: 700; letter-spacing: .06em; margin-bottom: 1.2mm; }
+.tips ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6mm 5mm; }
+.tips li { font-size: 8pt; line-height: 1.5; padding-left: 3.5mm; position: relative; }
+.tips li::before { content: "▪"; position: absolute; left: 0; }
+
+.foot { margin-top: auto; padding-top: 2mm; border-top: 0.25mm solid #ccc;
+        display: flex; justify-content: space-between; font-size: 7.5pt; color: #888; }
+</style></head><body>
+<div class="page">
+
+<div class="head">
+<h1>各ターンでやること</h1>
+<div class="sub">自己発見ゲーム「私の能力ランキング」<br>配布用マニュアル v8</div>
+</div>
+
+<div class="lead">「親」を1人決め、残りは全員「子」。親が自分の能力6つに<b>1着〜6着</b>をつけ、子がその着順を当てる<b>6連単</b>のゲームです。1セッション約11分。全員が1回ずつ親を経験したら1周です。</div>
+
+<table class="steps"><thead><tr><th class="sc">ステップ</th><th>親がやること</th><th>子がやること</th></tr></thead><tbody><tr><td class="sc"><span class="num">1</span><span class="t">親の自己紹介</span><span class="min">2分</span><div class="note">子が能力を推測できるだけの材料を出すのがコツ。</div></td><td><p>ワークシートに沿って、これまでの業務経験と、そこで身についた能力を話す。</p></td><td><p>聞きながらメモを取る。気になったことは質問してよい。</p></td></tr><tr><td class="sc"><span class="num">2</span><span class="t">能力カードを引いて公開</span><div class="note">話に出てこなかった能力も、そのまま着順をつける対象。</div></td><td><p>社会人基礎力の山から3枚、その他の能力の山から3枚を引き、場の番号カード（1〜6）の下に、引いた順に左から表向きで置く。</p></td><td><p>場に並んだ6つの能力を確認する。</p></td></tr><tr><td class="sc"><span class="num">3</span><span class="t">親の着順づけ ／ 子の初期予想</span><span class="min">3分</span></td><td><p>能力ごとに<b>「番号＋自信度」のペア</b>を作り、自信のある順に左から6組を<b>2段とも裏向き</b>で並べる（上段＝番号、下段＝自信度、左が1着）。</p></td><td><p>親の話を手がかりに、各自の番号カードで予想着順を表向きに並べる（左が1着）。</p><div class="warn">相談は禁止</div></td></tr><tr><td class="sc"><span class="num">4</span><span class="t">ヒントタイムと最終決定</span><span class="min">3分</span><div class="note">先に初期予想を採点・記録してから並べ替える。</div></td><td><p><b>下段の自信度カード6枚だけを表に返す</b>。上段の番号カードは裏向きのまま。</p></td><td><p>見えている自信度の構成をもとに相談し、全員で合意した1つの最終着順を決め、<b>各自の列をその順に並べ替える</b>。</p></td></tr><tr><td class="sc"><span class="num">5</span><span class="t">答え合わせと対話</span><span class="min">2分</span><div class="note">ここが本題。評価のズレを必ず言葉にする。</div></td><td><p>上段の番号カードを左から1枚ずつ表に返して発表。「1着はS1、3番の計画力」。続けて<b>なぜその着順にしたのか</b>を説明する。</p></td><td><p>予想が外れたところを中心に、なぜそう考えたのかを親に伝える。</p></td></tr><tr><td class="sc"><span class="num">6</span><span class="t">「わかってくれたかも賞」の授与</span><span class="min">1分</span><div class="note">選んだ理由は相手の発言を引用して述べる。</div></td><td><p>子1人を選び、賞カードに名前を書いて手渡す（<b>得点なし</b>）。的中数ではなく<b>「言われて一番しっくりきた」</b>相手を選ぶ。</p></td><td><p>受け取った賞カードは持ち帰ってよい。</p></td></tr></tbody></table>
+
+<div class="bottom">
+<div>
+<h2>場のレイアウト</h2>
+<div class="figcap">■ テーブル中央（番号と能力の対応表・全員が見る）</div>
+<div class="figrow"><div class="figlabel">番号カード（場用）<br><span>カラー・動かさない</span></div>
+<div class="figcell k">1 白</div><div class="figcell k">2 黒</div><div class="figcell k">3 赤</div><div class="figcell k">4 青</div><div class="figcell k">5 黄</div><div class="figcell k">6 緑</div></div>
+<div class="figrow"><div class="figlabel">能力カード<br><span>表向き</span></div>
+<div class="figcell">計画力</div><div class="figcell">傾聴力</div><div class="figcell">実行力</div><div class="figcell">交渉力</div><div class="figcell">責任感</div><div class="figcell">論理的思考力</div></div>
+<div class="figcap">■ 親の着順列（左が1着・3で2段とも裏向きに並べる）</div>
+<div class="figrow"><div class="figlabel">上段：番号カード<br><span>5で表に返す</span></div>
+<div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div></div>
+<div class="figrow"><div class="figlabel">下段：自信度カード<br><span>4で表に返す</span></div>
+<div class="figcell">S1</div><div class="figcell">S2</div><div class="figcell">A1</div><div class="figcell">A2</div><div class="figcell">A3</div><div class="figcell">C1</div></div>
+<div class="fignote">自信度は見えているのに、その上の番号は伏せられている ── この「紐づいていない」状態がヒントの正体です。ペアで並べてあるので、親は対応を覚えておく必要がありません。</div>
+</div>
+
+<div>
+<h2>採点</h2>
+<table>
+<tr><th>初期予想</th><td>ステップ3で各自が並べた着順。<strong>個人の得点</strong>。</td><td class="c">6点</td></tr>
+<tr><th>最終予想</th><td>ステップ4で合意した着順。<strong>子全員に加算</strong>。</td><td class="c">6点</td></tr>
+</table>
+<div class="fignote">着順が一致した番号1枚につき1点、子1人あたり12点満点。6枚すべて的中で<strong>6連単的中</strong>。最終予想は全員同点なので、差がつくのは初期予想だけです。</div>
+<h2 style="margin-top:3mm">自信度カードの序列</h2>
+<div class="tier">
+<div><b>S</b>最も自信</div><div><b>A</b>自信あり</div><div><b>B</b>そこそこ</div><div><b>C</b>これから</div>
+</div>
+<div class="fignote">各段階3枚ずつ（S1〜C3）の計12枚。同じ段階なら番号が小さいほど上位です。</div>
+</div>
+</div>
+
+<div class="tips">
+<div class="th">迷ったときは</div>
+<ul>
+<li>手元の<b>能力一覧表</b>で定義を確認してよい。カード右上の No.01〜No.30 が一覧表と対応。</li>
+<li>場の番号カードは動かさない。親は6枚すべてに着順をつける（同率なし）。</li>
+<li>自信度は12枚から自由に選べる。S1・S2・A1・A2・A3・C1 のような偏りも可。</li>
+<li>初期予想は相談禁止。最終予想は全員で1つに合意。時間は目安。</li>
+</ul>
+</div>
+
+<div class="foot"><span>自己発見ゲーム「私の能力ランキング」｜各ターンでやること</span><span>1 / 1</span></div>
+</div>
+</body></html>

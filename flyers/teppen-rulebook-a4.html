@@ -1,0 +1,210 @@
+<title>テッペン ルールブック(A4折りたたみ版)</title>
+<meta name="description" content="不良チーム抗争ゲーム『テッペン』のA4一枚折りたたみルールブック">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rampart+One&family=RocknRoll+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Big+Shoulders+Stencil:wght@600;800&display=swap">
+
+<style>
+  :root{
+    --page-bg: #e6e6e6;
+    --ink: #141414;
+    --mute: #6a6a6a;
+    --card-bg: #fafafa;
+    --hair: rgba(20,20,20,0.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --page-bg:#161616; }
+  }
+  :root[data-theme="dark"]{ --page-bg:#161616; }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--page-bg); padding:14px;
+    font-family:"Zen Kaku Gothic New","Hiragino Sans",sans-serif; color:var(--ink);
+  }
+  .stencil{ font-family:"Big Shoulders Stencil",sans-serif; text-transform:uppercase; letter-spacing:.1em; }
+
+  .sheet{
+    width:210mm; height:297mm; margin:0 auto;
+    background:var(--card-bg);
+    display:grid;
+    grid-template-columns: 105mm 105mm;
+    grid-template-rows: repeat(4, 74.25mm);
+    box-shadow:0 0 0 0.6mm var(--ink);
+  }
+
+  .panel{
+    position:relative;
+    border-right:0.35mm dashed var(--hair);
+    border-bottom:0.35mm dashed var(--hair);
+    padding: 3.2mm 3.8mm;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .panel:nth-child(2n){ border-right:none; }
+  .panel:nth-child(7),.panel:nth-child(8){ border-bottom:none; }
+
+  .pnum{
+    position:absolute; top:2.6mm; right:3mm;
+    font-family:"Zen Kaku Gothic New",sans-serif; font-size:7px; color:var(--mute);
+    font-variant-numeric:tabular-nums; letter-spacing:.02em;
+  }
+  h2{
+    font-family:"RocknRoll One",sans-serif; font-size:10.2px; margin:0 0 1.8mm;
+    display:flex; align-items:baseline; gap:1.4mm;
+  }
+  h2 .idx{ font-family:"Rampart One",sans-serif; font-size:11.5px; }
+  h3{ font-family:"Big Shoulders Stencil",sans-serif; font-size:6.6px; letter-spacing:.07em; margin:1.4mm 0 .5mm; color:var(--mute); }
+  p, li{ font-size:6.9px; line-height:1.5; margin:0 0 1mm; }
+  ol,ul{ margin:0 0 1.1mm; padding-left:3mm; }
+  .tight{ margin:0; }
+  .note{ font-size:6.2px; color:var(--mute); line-height:1.45; }
+  b{ font-weight:700; }
+
+  table{ border-collapse:collapse; font-size:6.4px; margin:.7mm 0; width:100%; }
+  th,td{ border:0.25mm solid var(--hair); padding:.7mm 1mm; text-align:center; font-variant-numeric:tabular-nums; }
+  th{ font-family:"Big Shoulders Stencil",sans-serif; font-weight:600; letter-spacing:.02em; background:rgba(20,20,20,0.05); }
+
+  .cover{ align-items:center; justify-content:center; text-align:center; }
+  .cover h1{
+    font-family:"Rampart One",sans-serif; font-size:26px; margin:0 0 1mm; line-height:1;
+  }
+  .cover .sub{ font-size:7px; color:var(--mute); margin:0 0 3mm; }
+  .cover .tag{ font-size:6.8px; line-height:1.6; max-width:35ch; margin:0 auto; }
+  .cover .meta{ margin-top:3mm; font-size:6.4px; color:var(--mute); }
+  .cover .fold{ position:absolute; bottom:3mm; left:0; right:0; text-align:center; font-size:5.6px; color:var(--mute); padding:0 4mm; }
+
+  .special{
+    border:0.3mm solid var(--ink); border-radius:1mm; padding:1.3mm 1.9mm; margin-top:.9mm;
+  }
+  .special .lbl{ font-family:"Big Shoulders Stencil",sans-serif; font-size:5.8px; letter-spacing:.07em; color:var(--mute); display:block; margin-bottom:.4mm; }
+
+  /* 入稿用: 塗り足し3mm(A4 210×297mm + 3mm×2 = 216×303mm)。トンボはposition:fixedで
+     全ページ共通の四隅に固定表示。色モードはRGBのまま(印刷会社側でCMYK変換する前提)。 */
+  .bleed-wrap{ position:relative; width:216mm; height:303mm; background:var(--card-bg); margin:0 auto; }
+  .bleed-wrap .sheet{ position:absolute; top:3mm; left:3mm; margin:0; }
+  .crop{ display:none; }
+  .crop.tl-h{ top:3mm; left:0; width:3mm; height:0.2mm; }
+  .crop.tl-v{ top:0; left:3mm; width:0.2mm; height:3mm; }
+  .crop.tr-h{ top:3mm; right:0; width:3mm; height:0.2mm; }
+  .crop.tr-v{ top:0; right:3mm; width:0.2mm; height:3mm; }
+  .crop.bl-h{ bottom:3mm; left:0; width:3mm; height:0.2mm; }
+  .crop.bl-v{ bottom:0; left:3mm; width:0.2mm; height:3mm; }
+  .crop.br-h{ bottom:3mm; right:0; width:3mm; height:0.2mm; }
+  .crop.br-v{ bottom:0; right:3mm; width:0.2mm; height:3mm; }
+
+  @media print{
+    @page{ size:216mm 303mm; margin:0; }
+    body{ background:#fff !important; padding:0; }
+    .sheet{ box-shadow:none; }
+    .crop{ display:block; position:fixed; background:#000; }
+  }
+</style>
+
+<div class="bleed-wrap">
+<span class="crop tl-h"></span><span class="crop tl-v"></span>
+<span class="crop tr-h"></span><span class="crop tr-v"></span>
+<span class="crop bl-h"></span><span class="crop bl-v"></span>
+<span class="crop br-h"></span><span class="crop br-v"></span>
+<div class="sheet">
+
+  <!-- ① 表紙 + コンセプト -->
+  <div class="panel cover">
+    <span class="pnum">1 / 8</span>
+    <h1>テッペン</h1>
+    <p class="tag">不良チームのカシラとなり、手下を送り込んで街のナワバリを奪い合う心理戦ゲーム。送り込みすぎると警察が動き出す(バースト)。相手の出方を読み、攻め時を見極めよう。</p>
+    <p class="meta">3〜6人 / 約15分 / ベータ版</p>
+    <p class="fold">折り線に沿って山折り→アコーディオン状にたたむと、カードと同じ箱に収まるサイズになります</p>
+  </div>
+
+  <!-- ② コンポーネント -->
+  <div class="panel">
+    <span class="pnum">2 / 8</span>
+    <h2><span class="idx">1</span>コンポーネント</h2>
+    <h3 class="stencil">手下カード</h3>
+    <p>1〜7の数字カード。各数字が全プレイヤー分あります(「2」「3」「4」だけは2倍の枚数)。「2〜6」は数字がそのまま強さ。「1(番長の妹)」は場に7があり単独で出せば7を倒す。「7(番長)」は単独の1がいると自動敗北する。</p>
+    <h3 class="stencil">ナワバリカード</h3>
+    <p>「+1〜+10」の10種。獲得すると記載の数字がそのまま得点になる。</p>
+  </div>
+
+  <!-- ③ 準備 -->
+  <div class="panel">
+    <span class="pnum">3 / 8</span>
+    <h2><span class="idx">2</span>準備</h2>
+    <ol>
+      <li>手下の「1」と「7」を、各プレイヤーに1枚ずつ配る。</li>
+      <li>残りの「2〜6」をまとめてシャッフルし、各プレイヤーに5枚ずつ配る(数字の重複・欠番あり。「2」「3」「4」は人数分×2を束に加える)。</li>
+      <li>ナワバリカード10種すべてをシャッフルして裏向きの山札にする。</li>
+      <li>山札切れ、または全員の手札が0枚になるまでラウンドを繰り返す(最大10ラウンド)。</li>
+    </ol>
+  </div>
+
+  <!-- ④ ラウンドの流れ(1) -->
+  <div class="panel">
+    <span class="pnum">4 / 8</span>
+    <h2><span class="idx">3</span>ラウンドの流れ(1)</h2>
+    <h3 class="stencil">ステップ1 — ナワバリの開帳</h3>
+    <p>山札の1番上を1枚めくり、場の中央に表向きで公開する。</p>
+    <h3 class="stencil">ステップ2 — 出陣</h3>
+    <p>手札から出すカードを選び、裏向きで自分の前に伏せる。<b>何枚でも</b>出せる。強さは合計値になる。<b>何も出さない(0枚)</b>選択も可能。</p>
+    <h3 class="stencil">ステップ3 — タイマン</h3>
+    <p>「せーの」で全員一斉にオープン。出さない人も出すふりをする。</p>
+  </div>
+
+  <!-- ⑤ ラウンドの流れ(2) -->
+  <div class="panel">
+    <span class="pnum">5 / 8</span>
+    <h2><span class="idx">3</span>ラウンドの流れ(2)</h2>
+    <h3 class="stencil">ステップ4 — サツのサイレン</h3>
+    <p>出したカードの総枚数を数える。基準以上ならバースト:このラウンドは無効、出したカードとナワバリカードは全て捨て札。</p>
+    <table>
+      <tr><th>人数</th><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+      <tr><th>基準(人数+2)</th><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+    </table>
+    <p class="note">「サツが来た!」と最初に言った人は、バースト時に①場のナワバリカードを獲得、または②他の誰かが既に獲得したナワバリから好きな1枚を奪う、のどちらかを選べる(誤報なら逆にカードを1枚失う)。</p>
+    <h3 class="stencil">ステップ5 — 勝敗判定</h3>
+    <p>①7が場にあり1が自分だけ→7の人が自動敗北し1の人が獲得。2人以上は不発。②合計値最高のプレイヤーが獲得。自分の1と7の同時出しは自動敗北。同点は持ち越し。</p>
+  </div>
+
+  <!-- ⑥ 特殊カード -->
+  <div class="panel">
+    <span class="pnum">6 / 8</span>
+    <h2><span class="idx">4</span>特殊カード</h2>
+    <div class="special">
+      <span class="lbl stencil">1 — 番長の妹</span>
+      <p class="tight">通常の強さは1。場に7が出た回、1が自分だけなら7を倒しナワバリを獲得する。</p>
+    </div>
+    <div class="special">
+      <span class="lbl stencil">7 — 番長</span>
+      <p class="tight">1を持つ相手が単独でいれば自動敗北する。</p>
+    </div>
+    <p class="note">自分の1と7を同じラウンドに出した場合、その人は自動的に敗北する(次点のプレイヤーが繰り上がり。該当者なしは持ち越し)。</p>
+  </div>
+
+  <!-- ⑦ 勝利処理と終了 -->
+  <div class="panel">
+    <span class="pnum">7 / 8</span>
+    <h2><span class="idx">5</span>勝利処理と終了</h2>
+    <p>出された1〜7のカードは、勝敗に関わらずすべて捨て札になる。</p>
+    <p><b>同点時:</b>ナワバリカードは場に残り、次ラウンドで決着した人が持ち越し分もまとめて獲得。持ち越し先が無い最後のラウンドでの同点は、そのまま捨て札。</p>
+    <p><b>ゲーム終了:</b>山札切れ、または全員の手札が0枚になった時点で終了(最大10ラウンド)。獲得したナワバリの合計点が最も高い人が「テッペン」。同点なら、獲得したナワバリの中で一番大きな数字を持つ方が優先。それでも同点なら「テッペン」を分け合う(共同優勝)。</p>
+  </div>
+
+  <!-- ⑧ 早見表 -->
+  <div class="panel">
+    <span class="pnum">8 / 8</span>
+    <h2><span class="idx">6</span>早見表</h2>
+    <h3 class="stencil">手下カード枚数(人数分)</h3>
+    <table>
+      <tr><th>数字</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+      <tr><th>倍率</th><td>×1</td><td>×2</td><td>×2</td><td>×2</td><td>×1</td><td>×1</td><td>×1</td></tr>
+    </table>
+    <h3 class="stencil">バースト基準(人数+2)</h3>
+    <table>
+      <tr><th>人数</th><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+      <tr><th>基準</th><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+    </table>
+    <p class="note">配布時は「1」「7」を1枚ずつ、「2」「3」「4」を人数分×2、「5」「6」を人数分だけ束に加えてシャッフルし、各プレイヤーに5枚配る(余りは非公開のまま使わない)。</p>
+  </div>
+
+</div>
+</div>

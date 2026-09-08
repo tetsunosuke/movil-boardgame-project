@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<title>私の能力ランキング｜ルール説明書 v8</title><style>
+@page { size: A4; margin: 14mm 15mm 12mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans CJK JP", sans-serif; color: #111; font-size: 9.5pt; line-height: 1.7;
+       -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+
+h1 { font-size: 21pt; font-weight: 700; line-height: 1.3; }
+.sub { font-size: 10pt; color: #555; margin-top: 1.5mm; }
+.ver { display: inline-block; font-size: 7.5pt; font-weight: 700; color: #fff; background: #111;
+       padding: 1mm 2.5mm; letter-spacing: .08em; vertical-align: 3mm; margin-left: 3mm; }
+h2 { font-size: 12pt; font-weight: 700; margin-top: 4.5mm; padding-bottom: 1.5mm; border-bottom: 0.6mm solid #111; }
+h3 { font-size: 10pt; font-weight: 700; margin-top: 4mm; }
+p { margin-top: 2mm; }
+ul { margin: 2mm 0 0 5mm; }
+li { margin-top: 0.6mm; }
+.lead { margin-top: 3mm; font-size: 10pt; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 4mm; }
+.box { border: 0.4mm solid #111; padding: 4mm 4.5mm; }
+.box .bt { font-size: 9pt; font-weight: 700; margin-bottom: 1.5mm; }
+.box.warn { background: #f2f2f2; }
+
+.steps { margin-top: 3mm; }
+.step { display: grid; grid-template-columns: 9mm 1fr; gap: 4mm; padding: 2.4mm 0; border-top: 0.3mm solid #ddd; }
+.step:first-child { border-top: none; }
+.num { width: 8mm; height: 8mm; border-radius: 50%; background: #111; color: #fff;
+       font-size: 11pt; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.st { font-size: 10.5pt; font-weight: 700; }
+.sd { margin-top: 1mm; color: #222; }
+.who { display: inline-block; font-size: 7.5pt; font-weight: 700; padding: 0.6mm 2mm;
+       margin-right: 2mm; vertical-align: 0.6mm; border: 0.3mm solid #111; }
+.who.oya { background: #111; color: #fff; }
+.who.ko { background: #fff; color: #111; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size: 9pt; }
+th, td { border: 0.3mm solid #999; padding: 1.6mm 3mm; text-align: left; vertical-align: top; }
+th { background: #f0f0f0; font-weight: 700; }
+td.c, th.c { text-align: center; }
+td.hit { background: #dcdcdc; font-weight: 700; }
+
+.numrow { display: flex; gap: 3mm; margin-top: 2.2mm; }
+.numcell { flex: 1; text-align: center; border: 0.3mm solid #999; padding: 1.4mm 1mm; }
+.numcell .d { font-size: 20pt; font-weight: 700; line-height: 1.1; }
+.numcell .c { font-size: 8pt; font-weight: 700; margin-top: 0.5mm; }
+
+.tierrow { display: flex; gap: 3mm; margin-top: 2.2mm; }
+.tiercell { flex: 1; text-align: center; border: 0.3mm solid #999; padding: 1.8mm 1mm; }
+.tiercell .g { font-size: 18pt; font-weight: 700; line-height: 1.1; }
+.tiercell .bars { display: flex; gap: 0.9mm; justify-content: center; margin: 1mm 0; }
+.tiercell .bars i { width: 3.4mm; height: 1.7mm; border: 0.3mm solid #111; }
+.tiercell .bars i.on { background: #111; }
+.tiercell .c { font-size: 7.5pt; color: #444; }
+
+.fig { margin-top: 3mm; }
+.figrow { display: grid; grid-template-columns: 27mm repeat(6, 1fr); gap: 1.5mm; margin-top: 1.2mm; align-items: stretch; }
+.figlabel { font-size: 7.2pt; color: #444; align-self: center; line-height: 1.3; }
+.figcap { font-size: 7.5pt; font-weight: 700; color: #333; margin-top: 1mm; }
+.figlabel span { font-size: 6.8pt; color: #888; }
+.figcell { border: 0.3mm solid #111; text-align: center; font-size: 8pt; padding: 1.3mm 0.5mm; }
+.figcell.k { background: #111; color: #fff; }
+.figcell.s { background: #fff; }
+.figcell.b { background: repeating-linear-gradient(45deg, #ccc 0 0.4mm, #fff 0.4mm 1.6mm); color: #666; font-weight: 700; }
+.foot { margin-top: 4mm; padding-top: 3mm; border-top: 0.3mm solid #ddd;
+        font-size: 7.5pt; color: #888; display: flex; justify-content: space-between; }
+.tag { display:inline-block; font-size:8pt; font-weight:700; border:0.3mm solid #111;
+       padding:0.4mm 2mm; }
+</style></head><body>
+
+<div class="page">
+<h1>自己発見ゲーム「私の能力ランキング」<span class="ver">RULE v8</span></h1>
+<div class="sub">プロトタイプ版ルール説明書｜5〜6人用／全員が1回ずつ親を経験して約55〜66分／<strong>6つの能力の着順を当てる「6連単」形式</strong></div>
+
+<p class="lead">自分の経験から得た能力6つに、自分で<strong>1着から6着までの着順</strong>をつけます。それを他のメンバーが推理する<strong>6連単</strong>のゲームです。当たった数を競いながら、<strong>自己評価と他者評価のズレ</strong>を発見することが目的です。</p>
+
+<h2>ゲームの目的</h2>
+<ul>
+<li>自身の経験から得た能力を客観的に評価し、他者からの視点と比較することで自己理解を深める。</li>
+<li>能力を比較・関連づけながら着順をつけることで、言葉の定義だけではない多面的な側面を捉える。</li>
+</ul>
+
+<h2>コンポーネント</h2>
+<table>
+<tr><th style="width:34mm">能力カード 30枚</th><td><strong>社会人基礎力 12枚（黒地の帯）</strong>と<strong>その他の能力 18枚（白地の帯）</strong>の2つの山に分けて使います。裏面のデザインが異なります。カード右上の<strong>No.01〜No.30</strong>は30枚の通し番号で、能力一覧表と対応しています。</td></tr>
+<tr><th>番号カード 1〜6×7セット</th><td>1〜6の番号を1セットとし、<strong>場用1・親用1・子用（人数分）</strong>を使います。<strong>場用の1セットだけカラー</strong>（1白・2黒・3赤・4青・5黄・6緑＝競馬の枠番と同じ配色）で、開始前にテーブル中央へ1〜6の順で並べ、最後まで動かしません。手元用は白黒の数字だけです。</td></tr>
+<tr><th>自信度カード 12枚</th><td><strong>S1・S2・S3／A1・A2・A3／B1・B2・B3／C1・C2・C3</strong>。この12枚がそのまま着順の序列になっています。</td></tr>
+<tr><th>賞カード 6枚</th><td><strong>「私のことを一番わかってくれたかも賞」</strong>。ステップ6で親が子1人に授与します（<strong>得点なし</strong>）。名前の記入欄があり、受け取った子が持ち帰れます。1セッションに1枚使います。</td></tr>
+<tr><th>能力一覧表</th><td>能力カード30枚の全リスト（番号・名称・定義）。<strong>プレイヤー全員に1枚ずつ配ります</strong>。</td></tr>
+<tr><th>ワークシート</th><td>親が事前に記入したもの。</td></tr>
+</table>
+
+<h3>番号カード（1〜6）と枠番の色</h3>
+<div class="numrow"><div class="numcell"><div class="d">1</div><div class="c">白</div></div><div class="numcell"><div class="d">2</div><div class="c">黒</div></div><div class="numcell"><div class="d">3</div><div class="c">赤</div></div><div class="numcell"><div class="d">4</div><div class="c">青</div></div><div class="numcell"><div class="d">5</div><div class="c">黄</div></div><div class="numcell"><div class="d">6</div><div class="c">緑</div></div></div>
+<p style="font-size:8.5pt;color:#555">色は<strong>競馬の枠番</strong>と同じ並びです。場に並べる1セットだけがカラーで、手元のカードは白黒の数字だけ。議論では「3番を1着に」のように<strong>場の番号</strong>で呼びます。能力そのものは No. 付きなので混同しません。</p>
+
+<h3>自信度カード（S1〜C3 の12枚）</h3>
+<div class="tierrow"><div class="tiercell"><div class="g">S</div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><div class="c">最も自信がある</div></div><div class="tiercell"><div class="g">A</div><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></div><div class="c">自信がある</div></div><div class="tiercell"><div class="g">B</div><div class="bars"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></div><div class="c">そこそこ</div></div><div class="tiercell"><div class="g">C</div><div class="bars"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div><div class="c">これから</div></div></div>
+<p style="font-size:9pt"><strong>序列は S1 &gt; S2 &gt; S3 &gt; A1 &gt; A2 &gt; A3 &gt; B1 &gt; B2 &gt; B3 &gt; C1 &gt; C2 &gt; C3</strong> の順です。
+親がこの中から6枚を選んで各能力に割り当てると、それだけで1着〜6着が確定します。各3枚しかないので全部Sにはできません。同じ自信度を複数使うときは<strong>番号の小さいものから</strong>（S1→S2→S3）。</p>
+
+<div class="foot"><span>自己発見ゲーム「私の能力ランキング」ルール説明書 v8</span><span>1 / 4</span></div>
+</div>
+
+<div class="page">
+<h2 style="margin-top:0">ゲームの流れ</h2>
+<div class="steps">
+
+<div class="step"><div class="num">1</div><div>
+<div class="st">親の自己紹介</div>
+<div class="sd">テーマオーナーである「親」を1人決めます（残りは全員「子」）。親は事前に記入したワークシートの内容を発表し、自身の業務経験と身についた能力について語ります。<span class="tag">2分</span></div>
+</div></div>
+
+<div class="step"><div class="num">2</div><div>
+<div class="st">能力カードを引いて公開</div>
+<div class="sd">親は<strong>社会人基礎力の山から3枚、その他の能力の山から3枚</strong>を引き、あらかじめ場に並べてある番号カード（1〜6）の下に、<strong>引いた順に左から1枚ずつ表向きで</strong>置きます。つまり社会人基礎力の3枚が1・2・3番、その他の3枚が4・5・6番になります。<br>
+※ 話に出てこなかった能力が選ばれることもあります。それも含めて着順をつけます。</div>
+</div></div>
+
+<div class="step"><div class="num">3</div><div>
+<div class="st">親の着順づけ ／ 子の初期予想</div>
+<div class="sd">
+<span class="who oya">親</span>能力ごとに<strong>「番号カード＋自信度カード」のペア</strong>を作り、自信のある順に左から6組を<strong>2段・すべて裏向き</strong>で並べます（上段＝番号、下段＝自信度、<strong>左が1着</strong>）。ここで対応づけを物理的に確定させるので、あとで思い出す必要はありません。<br>
+<span class="who ko">子</span>親の話を手がかりに、各自の番号カードで予想着順を<strong>表向きに</strong>並べます（左が1着）。<strong>相談は禁止</strong>です。<span class="tag">3分</span></div>
+</div></div>
+
+<div class="step"><div class="num">4</div><div>
+<div class="st">ヒントタイムと最終決定</div>
+<div class="sd">まず<strong>子の初期予想を採点して記録します</strong>（このあと並べ替えるので、ここで必ず記録してください）。<br>
+次に親が、<strong>下段の自信度カード6枚だけを表に返します</strong>。左からS1、S2、A1…と序列どおりに並ぶので、子には「S1が1枚、S2が1枚、A1〜A3が3枚、C1が1枚」という構成が見えます。<strong>上段の番号カードは裏向きのまま</strong>なので、どの能力が何着なのかは分かりません。<br>
+子はこれを手がかりに相談し、<strong>全員で合意した1つの最終着順</strong>を決めます。合意できたら<strong>子全員が自分の番号カードをその順に並べ替えます</strong>。全員の列が同じ並びになった状態が最終予想です。</div>
+</div></div>
+
+<div class="step"><div class="num">5</div><div>
+<div class="st">答え合わせと対話</div>
+<div class="sd">親が<strong>上段の番号カードを左から1枚ずつ表に返して</strong>発表します。「1着はS1、3番の計画力でした」というように、1着から順に正解が明らかになります。<br>
+その後、親は<strong>なぜその能力を1着にしたのか、同じSでもなぜS1とS2を分けたのか</strong>を必ず説明してください。続けて子は、外れたところを中心に<strong>なぜそう予想したのか</strong>を親に伝えます。<span class="tag">2分</span></div>
+</div></div>
+
+<div class="step"><div class="num">6</div><div>
+<div class="st">「私のことを一番わかってくれたかも賞」の授与</div>
+<div class="sd">全員の話を聞いたうえで、親が子の中から1人を選び、<strong>賞カードに名前を書いて手渡します</strong>。<strong>得点はつきません</strong>。的中数ではなく、<strong>「言われて一番しっくりきた」と感じた相手</strong>を選んでください。<br>
+選ぶときは<strong>理由を、相手の発言を引用して述べます</strong>。「○○さんの『△△』という指摘が一番刺さった」という形です。人柄ではなく発言内容で選ぶための決まりなので、必ず守ってください。<span class="tag">1分</span></div>
+</div></div>
+
+</div>
+
+<div class="foot"><span>自己発見ゲーム「私の能力ランキング」ルール説明書 v8</span><span>2 / 4</span></div>
+</div>
+
+<div class="page">
+<h2 style="margin-top:0">場のレイアウト</h2>
+<div class="fig">
+<div class="figcap">■ テーブル中央（番号と能力の対応表・全員が見る）</div>
+<div class="figrow"><div class="figlabel">番号カード（場用）<br><span>カラー・動かさない</span></div>
+<div class="figcell k">1 白</div><div class="figcell k">2 黒</div><div class="figcell k">3 赤</div><div class="figcell k">4 青</div><div class="figcell k">5 黄</div><div class="figcell k">6 緑</div></div>
+<div class="figrow"><div class="figlabel">能力カード<br><span>表向き</span></div>
+<div class="figcell k">計画力</div><div class="figcell k">傾聴力</div><div class="figcell k">実行力</div><div class="figcell s">交渉力</div><div class="figcell s">責任感</div><div class="figcell s">論理的思考力</div></div>
+<div class="figcap" style="margin-top:2.5mm">■ 親の着順列（左が1着・ステップ3で2段とも裏向きに並べる）</div>
+<div class="figrow"><div class="figlabel">上段：番号カード<br><span>ステップ5で表に返す</span></div>
+<div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div><div class="figcell b">?</div></div>
+<div class="figrow"><div class="figlabel">下段：自信度カード<br><span>ステップ4で表に返す</span></div>
+<div class="figcell">S1</div><div class="figcell">S2</div><div class="figcell">A1</div><div class="figcell">A2</div><div class="figcell">A3</div><div class="figcell">C1</div></div>
+</div>
+<p style="font-size:8.5pt;color:#555;margin-top:2mm">自信度の構成は見えているのに、その上の番号は伏せられている。この「紐づいていない」状態がヒントの正体です。親は2段をペアで並べているので、どの能力にどの自信度を割り当てたかを覚えておく必要はありません。</p>
+
+<h2>採点</h2>
+<p>子の予想は<strong>着順が一致した枚数</strong>で得点します。1枚につき1点、各6点満点。子1人あたりの満点は<strong>12点</strong>です。6枚すべて的中したら<strong>「6連単的中」</strong>。めったに出ないので、出たら全員で称えてください。</p>
+<table>
+<tr><th style="width:38mm">初期予想（個人）</th><td>ステップ3で各自が並べた着順。<strong>ステップ4で並べ替える前に採点・記録します。</strong>得点はその子個人のものです。</td><td class="c" style="width:22mm">6点満点</td></tr>
+<tr><th>最終予想（全体）</th><td>ステップ4で全員が合意した着順を採点します。得点は<strong>子全員に同じだけ</strong>加算されます。</td><td class="c">6点満点</td></tr>
+</table>
+<p style="font-size:9pt;color:#444">親が並べた番号カードの左右がそのまま1着〜6着です。最終予想は子全員に同じ点が入るため、<strong>子の間で差がつくのは初期予想だけ</strong>です。賞に得点はありません。</p>
+
+<h3>採点例</h3>
+<table>
+<tr><th class="c" style="width:16mm">着順</th><th class="c">1着</th><th class="c">2着</th><th class="c">3着</th><th class="c">4着</th><th class="c">5着</th><th class="c">6着</th><th class="c" style="width:16mm">得点</th></tr>
+<tr><th>正解</th><td class="c">3番</td><td class="c">5番</td><td class="c">1番</td><td class="c">6番</td><td class="c">4番</td><td class="c">2番</td><td class="c">—</td></tr>
+<tr><th>自信度</th><td class="c">S1</td><td class="c">S2</td><td class="c">A1</td><td class="c">A2</td><td class="c">B1</td><td class="c">C1</td><td class="c">—</td></tr>
+<tr><th>子Aの予想</th><td class="c">5番</td><td class="c">3番</td><td class="c hit">1番</td><td class="c">4番</td><td class="c">6番</td><td class="c hit">2番</td><td class="c"><strong>2点</strong></td></tr>
+</table>
+
+<div class="foot"><span>自己発見ゲーム「私の能力ランキング」ルール説明書 v8</span><span>3 / 4</span></div>
+</div>
+
+<div class="page">
+<h2 style="margin-top:0">進行の目安</h2>
+<table>
+<tr><th style="width:38mm">ルール説明</th><td>3分</td></tr>
+<tr><th>1セッション（1人が親）</th><td>約11分（自己紹介2分＋カード公開・着順づけ・初期予想3分＋ヒントと最終決定3分＋答え合わせと対話2分＋賞の授与1分）</td></tr>
+<tr><th>1周（全員が1回ずつ親を経験）</th><td>5人で約55分、6人で約66分（途中で切り上げても構いません）</td></tr>
+</table>
+
+<h2>準備のしかた（プロトタイプ）</h2>
+<ul>
+<li>カード印刷データを<strong>A4・等倍・片面</strong>で出力します。<strong>1〜13ページは白黒、最終14ページ（場用の番号カード）だけカラー</strong>です。実線の枠に沿って切り離します。1枚あたり<strong>63×88mm</strong>（イジンデンと同寸）で、<strong>スリーブにイジンデンの実カードと重ねて</strong>入れて使います。</li>
+<li>用紙を節約するため<strong>1枚の紙に複数の種類が混在します</strong>（各ページ上部に内訳を記載）。能力カードは「おもて」の後に同じ枚数の「うら」が続くので、<strong>スリーブの表側と裏側に入れて</strong>ください。他のカードにうら面はなく、イジンデンのカード面がそのまま見えます。</li>
+<li>能力カードは2つの山に分け、それぞれよく切って裏向きに置きます。</li>
+<li>番号カードは6枚1セットに分けます。<strong>カラーの1セットが場用</strong>です。テーブル中央に<strong>1〜6の順で左から並べておき</strong>、ゲーム中は動かしません。白黒のセットを親用に1つ、子の人数分を配ります。</li>
+<li>自信度カードは12枚（S1〜C3）をまとめて親の手元に置きます。</li>
+<li>賞カードは6枚まとめて場の脇に置き、1セッションごとに1枚使います。ペンも1本用意してください（親が名前を書きます）。</li>
+<li><strong>能力一覧表をプレイヤー全員に1枚ずつ配ります。</strong>ゲーム中ずっと手元に置いて構いません。</li>
+<li>親になる人は事前にワークシートを記入しておいてください。</li>
+</ul>
+
+<p class="lead" style="text-align:center;font-weight:700;margin-top:3mm">楽しいゲームを通じて、新たな自分を発見しましょう。</p>
+
+<div class="foot"><span>自己発見ゲーム「私の能力ランキング」ルール説明書 v8</span><span>4 / 4</span></div>
+</div>
+
+</body></html>
