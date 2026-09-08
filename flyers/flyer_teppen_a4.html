@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>A4チラシ - テッペン（手渡し用）</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", MeiRy, sans-serif;
+      color: #111; background-color: #fff;
+      width: 210mm; height: 297mm; margin: 0 auto; padding: 14mm 16mm;
+      display: flex; flex-direction: column; justify-content: space-between;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .header-bar { border: 2px solid #111; padding: 16px 20px; border-radius: 6px; }
+    .tag { display: inline-block; background: #111; color: #fff; font-weight: bold; font-size: 9.5pt; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+    h1 { font-size: 22pt; font-weight: 800; margin-bottom: 4px; color: #111; }
+    .catch { font-size: 11pt; color: #333; font-weight: bold; }
+
+    .main-section { display: flex; flex-direction: column; gap: 14px; flex-grow: 1; margin: 16px 0; }
+    .box { border: 1px solid #333; border-radius: 6px; padding: 14px 16px; background: #fff; }
+    .box-title { font-size: 11pt; font-weight: 800; color: #111; border-left: 3px solid #111; padding-left: 8px; margin-bottom: 8px; }
+    .box-content { font-size: 9.5pt; line-height: 1.55; color: #222; }
+    
+    .specs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
+    .spec-item { border: 1px solid #333; border-radius: 4px; padding: 10px; text-align: center; background: #fafafa; }
+    .spec-label { font-size: 8pt; color: #555; font-weight: bold; }
+    .spec-val { font-size: 10pt; font-weight: 800; color: #111; margin-top: 2px; }
+
+    .step-list { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+    .step-item { border: 1px solid #ccc; padding: 10px 12px; border-radius: 4px; font-size: 9pt; display: flex; gap: 10px; align-items: flex-start; background: #fff; }
+    .step-num { background: #111; color: #fff; font-weight: bold; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 8.5pt; flex-shrink: 0; }
+
+    footer { border: 1.5px solid #111; padding: 12px 16px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
+    .qr-container { display: flex; gap: 16px; align-items: center; }
+    .qr-box img { width: 62px; height: 62px; display: block; border: 1px solid #ccc; padding: 2px; }
+    .qr-label { font-size: 7pt; font-weight: bold; margin-top: 3px; display: block; text-align: center; }
+    .footer-text h3 { font-size: 10pt; font-weight: bold; margin-bottom: 3px; }
+    .footer-text p { font-size: 8pt; color: #333; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="header-bar">
+      <span class="tag">心理戦 × ナワバリ争いカードゲーム</span>
+      <h1>テッペン (TEPPEN)</h1>
+      <p class="catch">強気の出陣と警察の介入（バースト）を読み合うブラフ＆競りカードゲーム</p>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item"><div class="spec-label">プレイ人数</div><div class="spec-val">3〜6人</div></div>
+      <div class="spec-item"><div class="spec-label">プレイ時間</div><div class="spec-val">約15分</div></div>
+      <div class="spec-item"><div class="spec-label">対象</div><div class="spec-val">全般 / カジュアル</div></div>
+      <div class="spec-item"><div class="spec-label">ゲーム形式</div><div class="spec-val">手札伏せ競り</div></div>
+    </div>
+
+    <div class="main-section">
+      <div class="box">
+        <div class="box-title">ゲーム概要</div>
+        <div class="box-content">
+          プレイヤーは不良チームのカシラとなり、手下のヤンキーたちを現場へ送り込んで街のナワバリ（得点カード）を奪い合います。
+          大人数を出せば勝利しやすくなりますが、場に出たカードの総数が基準を超えると警察が介入（バースト）！
+          バーストが発生した際、いち早く「サツが来た！」と叫んだプレイヤーがナワバリを獲得できる、リスク管理と駆け引きのゲームです。
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-title">ゲームの流れ</div>
+        <div class="step-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><strong>ナワバリの公開：</strong> 狙うナワバリカード（1〜10点）を場の中央に表向きで出します。</div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><strong>出陣：</strong> 手札から出すカード（0枚でも可）を選び、伏せて一斉にオープンします。</div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><strong>判定：</strong> 場に出た総枚数が基準以上ならバースト。最初にコールした人がナワバリを獲得。バーストしなければ合計数字が最も高い人が獲得します。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-title">ゲームの特徴</div>
+        <div class="box-content">
+          ・<strong>特殊カードの要素：</strong> 最弱の「1（番長の妹）」は単独で出すと最強の「7（番長）」を無条件で倒せるルール。<br>
+          ・<strong>シンプルな心理戦：</strong> 他のプレイヤーが何枚出してくるかを予想する読み合いが発生。<br>
+          ・<strong>短時間でプレイ可能：</strong> 1プレイ約15分で遊べるカジュアルな対戦メカニクス。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="qr-container">
+      <div class="qr-box"><img src="https://quickchart.io/qr?text=https://forms.gle/QBjgcx1npj3jR9RN9&size=80" alt="アンケートQR"><span class="qr-label">試遊アンケート</span></div>
+      <div class="qr-box"><img src="https://quickchart.io/qr?text=https://note.com/tetsunosuke/n/n6d9602dc5bb5&size=80" alt="note記事QR"><span class="qr-label">制作note記事</span></div>
+      <div class="footer-text">
+        <h3>当ブースにてプロトタイプの即プレイ・対戦が可能です</h3>
+        <p>短時間で遊べるシンプルなルールです。気軽にお立ち寄りください。<br>制作の背景をまとめたnote記事や、ご意見をいただくアンケートも実施中です。</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

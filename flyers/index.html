@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アナログゲーム出店 チラシポータル</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", MeiRy, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 22px;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: transform 0.1s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #0f172a;
+    }
+    .card-tag {
+      font-size: 11px;
+      font-weight: bold;
+      background: #e2e8f0;
+      color: #334155;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 14px;
+    }
+    .btn {
+      display: inline-block;
+      background: #0f172a;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 4px;
+    }
+    .btn:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>アナログゲーム出店 チラシ一覧（A4印刷対応）</h1>
+  <p>イベント展示・試遊会向けA4チラシ（モノクロ版）のWeb閲覧およびPDF印刷用ページです。<br>各リンクを開いて `Ctrl + P`（印刷）からPDF化またはプリントアウトが可能です。</p>
+
+  <div class="grid">
+
+    <!-- 全体版 -->
+    <div class="card">
+      <span class="card-tag">総合案内</span>
+      <div class="card-title">4作品総合 A4チラシ</div>
+      <div class="card-desc">出展する4ゲームすべての特徴やスペックを1枚にまとめた手渡し用総合チラシ。</div>
+      <a href="flyer_all_games_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+    </div>
+
+    <!-- 私の能力ランキング -->
+    <div class="card">
+      <span class="card-tag">キャリア × 価値観</span>
+      <div class="card-title">私の能力ランキング</div>
+      <div class="card-desc">自己評価と他者予想のギャップから対話が深まる6連単対話カードゲーム。</div>
+      <a href="flyer_my_ability_ranking_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+    </div>
+
+    <!-- テッペン -->
+    <div class="card">
+      <span class="card-tag">心理戦 × ナワバリ</span>
+      <div class="card-title">テッペン (TEPPEN)</div>
+      <div class="card-desc">強気の出陣と警察の介入（バースト）を読み合うブラフ＆競りカードゲーム。</div>
+      <a href="flyer_teppen_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+    </div>
+
+    <!-- プロンプト・スパイ -->
+    <div class="card">
+      <span class="card-tag">AI対話 × プロンプト学習</span>
+      <div class="card-title">プロンプト・スパイ</div>
+      <div class="card-desc">AIオウムに工夫して話しかけ、手札の「秘密単語」を出力させる対話ゲーム。</div>
+      <a href="flyer_ai_parrot_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+    </div>
+
+    <!-- キャリア・アイランド -->
+    <div class="card">
+      <span class="card-tag">協力型 × キャリア理論</span>
+      <div class="card-title">キャリア・アイランド</div>
+      <div class="card-desc">ハンセンの4L理論をテーマに、組織目標と個人の幸せの両立を体験するゲーム。</div>
+      <a href="flyer_career_island_a4.html" class="btn" target="_blank">チラシを表示 (HTML)</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

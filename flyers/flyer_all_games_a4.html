@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>アナログゲーム展示・試遊会 A4チラシ（全体版・モノクロ）</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", MeiRy, sans-serif;
+      color: #111111; background-color: #ffffff;
+      width: 210mm; height: 297mm; margin: 0 auto; padding: 14mm 16mm;
+      display: flex; flex-direction: column; justify-content: space-between;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    /* ヘッダー */
+    header {
+      border: 2px solid #111111; padding: 16px 20px; border-radius: 6px; background-color: #ffffff;
+    }
+    .event-badge {
+      display: inline-block; background-color: #111111; color: #ffffff; font-weight: bold; font-size: 9.5pt; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;
+    }
+    header h1 { font-size: 20pt; font-weight: 800; line-height: 1.25; margin-bottom: 4px; letter-spacing: 0.5px; }
+    header p.subtitle { font-size: 10pt; line-height: 1.4; color: #333333; }
+
+    /* イントロ */
+    .intro-box {
+      border-left: 3px solid #111111; padding: 8px 14px; font-size: 9.5pt; line-height: 1.5; margin: 10px 0; background-color: #fafafa;
+    }
+
+    /* 4ゲームグリッド */
+    .games-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex-grow: 1; }
+    .game-card {
+      border: 1px solid #333333; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; background-color: #ffffff;
+    }
+    .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .game-tag { font-size: 8.5pt; font-weight: bold; border: 1px solid #111111; padding: 1px 6px; border-radius: 3px; background-color: #ffffff; color: #111111; }
+    .game-specs { font-size: 8.5pt; color: #555555; font-weight: bold; }
+
+    .game-title { font-size: 13pt; font-weight: 800; color: #111111; margin-bottom: 4px; border-bottom: 1px solid #111111; padding-bottom: 3px; }
+    .game-catch { font-size: 9pt; font-weight: bold; color: #333333; margin-bottom: 6px; }
+    .game-desc { font-size: 9pt; line-height: 1.45; color: #222222; margin-bottom: 8px; }
+    .game-point { background-color: #f0f0f0; border-radius: 4px; padding: 6px 8px; font-size: 8.5pt; line-height: 1.4; border-left: 2px solid #555555; }
+
+    /* フッター */
+    footer {
+      border: 1.5px solid #111111; padding: 12px 16px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; margin-top: 10px;
+    }
+    .qr-container { display: flex; gap: 16px; align-items: center; }
+    .qr-box { text-align: center; }
+    .qr-box img { width: 68px; height: 68px; display: block; border: 1px solid #ccc; padding: 2px; }
+    .qr-label { font-size: 7pt; font-weight: bold; margin-top: 3px; display: block; }
+
+    .footer-text h3 { font-size: 10.5pt; font-weight: bold; margin-bottom: 3px; }
+    .footer-text p { font-size: 8.5pt; color: #333333; line-height: 1.4; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="event-badge">ブース案内</div>
+    <h1>出展アナログゲーム プロトタイプ一覧</h1>
+    <p class="subtitle">企業人事・キャリアコンサルタントの視点とゲームメカニクスを活かした4つの試遊作品</p>
+  </header>
+
+  <div class="intro-box">
+    <strong>【ブースにお越しのみなさまへ】</strong> ワークショップでの試行錯誤を経て制作した4つのアナログゲームプロトタイプを出展しています。当ブースにてすべての作品を実際に触って試遊していただけます。気になる作品がございましたら、お気軽に体験・お声がけください。
+  </div>
+
+  <div class="games-grid">
+
+    <!-- Game 1: 私の能力ランキング -->
+    <div class="game-card">
+      <div>
+        <div class="game-header">
+          <span class="game-tag">キャリア × 自己評価</span>
+          <span class="game-specs">5〜6人 / 15〜60分</span>
+        </div>
+        <div class="game-title">私の能力ランキング</div>
+        <div class="game-catch">自己評価と他者予想のギャップから対話が生まれる</div>
+        <div class="game-desc">
+          親が自分の能力・強み6つに自己評価順位をつけ、子がその順位を予想する対話ゲーム。
+          「なぜその順位にしたのか」を語り合うことで、お互いの価値観や印象の違いに気づくきっかけを作ります。
+        </div>
+      </div>
+      <div class="game-point">
+        <strong>特徴：</strong> 社内研修・チームビルディングで活用事例のある自己理解ゲーム。
+      </div>
+    </div>
+
+    <!-- Game 2: テッペン -->
+    <div class="game-card">
+      <div>
+        <div class="game-header">
+          <span class="game-tag">心理戦 × ナワバリ争い</span>
+          <span class="game-specs">3〜6人 / 約15分</span>
+        </div>
+        <div class="game-title">テッペン</div>
+        <div class="game-catch">警察介入（バースト）を読み合うカードゲーム</div>
+        <div class="game-desc">
+          手札から出す枚数を伏せて一斉に比べ、街のナワバリを獲得するゲーム。
+          場に出たカードの総数が多すぎると警察が介入し、いち早く「サツが来た！」と宣言したプレイヤーが得点機会を得ます。
+        </div>
+      </div>
+      <div class="game-point">
+        <strong>特徴：</strong> シンプルな数字の競り合いとバースト宣言のタイミングが鍵となる作品。
+      </div>
+    </div>
+
+    <!-- Game 3: プロンプト・スパイ -->
+    <div class="game-card">
+      <div>
+        <div class="game-header">
+          <span class="game-tag">AI対話 × プロンプト学習</span>
+          <span class="game-specs">3〜4人 / 約20分</span>
+        </div>
+        <div class="game-title">プロンプト・スパイ</div>
+        <div class="game-catch">AIオウムに話しかけて特定の言葉を自白させる</div>
+        <div class="game-desc">
+          手札の単語をAI（LLM）に出力させる対話ゲーム。
+          単語を直接言うとNGとなるルールのもと、状況説明や連想を工夫してプロンプト（指示文）を組み立てるコツを学びます。
+        </div>
+      </div>
+      <div class="game-point">
+        <strong>特徴：</strong> 生成AIへの具体的な話しかけ方をゲーム感覚で体感できるプロトタイプ。
+      </div>
+    </div>
+
+    <!-- Game 4: キャリア・アイランド -->
+    <div class="game-card">
+      <div>
+        <div class="game-header">
+          <span class="game-tag">協力型 × キャリア理論</span>
+          <span class="game-specs">4人 / 約30〜60分</span>
+        </div>
+        <div class="game-title">キャリア・アイランド</div>
+        <div class="game-catch">組織目標と個人のキャリアバランスを体験</div>
+        <div class="game-desc">
+          ハンセンの4L理論（仕事・学び・余暇・愛）をモチーフにした協力型盤面ゲーム。
+          盤面のトラブルを解決しつつ、個人の燃え尽きを防ぎながらチーム目標の達成を目指します。
+        </div>
+      </div>
+      <div class="game-point">
+        <strong>特徴：</strong> 組織の目標達成と個人のウェルビーイングの調和を盤面でシミュレーション。
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="qr-container">
+      <div class="qr-box">
+        <img src="https://quickchart.io/qr?text=https://forms.gle/QBjgcx1npj3jR9RN9&size=80" alt="アンケートQR">
+        <span class="qr-label">試遊アンケート</span>
+      </div>
+      <div class="qr-box">
+        <img src="https://quickchart.io/qr?text=https://note.com/tetsunosuke/n/n6d9602dc5bb5&size=80" alt="note記事QR">
+        <span class="qr-label">制作note記事</span>
+      </div>
+      <div class="footer-text">
+        <h3>当ブースにて全作品のプロトタイプを試遊いただけます</h3>
+        <p>制作背景を綴ったnote記事の公開や、ご意見をいただくアンケートを実施しています。<br>プレイのご感想やアドバイスなど、ぜひお気軽にお寄せください。</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
