@@ -38,6 +38,7 @@ const SYNC_MAP = [
   ['ai-parrot/ai-parrot-manual.pdf', 'flyers/ai-parrot-manual.pdf'],
   ['ai-parrot/RULEBOOK.pdf', 'flyers/ai-parrot-rulebook.pdf'],
   ['ai-parrot/ai-parrot-cards.pdf', 'flyers/ai-parrot-cards.pdf'],
+  ['ai-parrot/ai-parrot-cards-proto.pdf', 'flyers/ai-parrot-cards-proto.pdf'],
   ['ai-parrot/FLYER.pdf', 'flyers/ai-parrot-flyer.pdf'],
 
   // --- my-ability-ranking (slug: ability-ranking) ---
