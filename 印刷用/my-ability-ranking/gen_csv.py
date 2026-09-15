@@ -66,10 +66,10 @@ def export_number_player():
     rows = []
     for n, cname, bg, fg in WAKU:
         rows.append({
-            "n": n, "color_name": cname, "hint": f"場では{cname}のカード",
+            "n": n, "color_name": cname,
             "bg_hex": bg, "fg_hex": fg, "Copies": 6,
         })
-    write_csv("number_player.csv", ["n", "color_name", "hint", "bg_hex", "fg_hex", "Copies"], rows)
+    write_csv("number_player.csv", ["n", "color_name", "bg_hex", "fg_hex", "Copies"], rows)
 
 
 def export_number_board():

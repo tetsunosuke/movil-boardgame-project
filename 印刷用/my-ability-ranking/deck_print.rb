@@ -144,8 +144,6 @@ Squib::Deck.new(width: CARD_W, height: CARD_H, cards: n * 2) do
        color: interleave(data['fg_hex'], nil), range: fr
   text str: interleave(data['color_name'], nil), x: tx(USABLE_X), y: ty(58), width: "#{USABLE_W}mm", height: '8mm',
        font: "#{FONT} bold 13", align: :center, valign: :middle, range: fr
-  text str: interleave(data['hint'], nil), x: tx(USABLE_X), y: ty(70), width: "#{USABLE_W}mm", height: '6mm',
-       font: "#{FONT} 7", align: :center, valign: :middle, color: '#999999', range: fr
 
   generic_back_common('番号（プレイヤー用）', range: br)
 

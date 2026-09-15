@@ -60,8 +60,6 @@ def draw_number_player_front_p(data, range)
        font: "#{FONT} bold 60", align: :center, valign: :middle, color: data['fg_hex'], range: range
   text str: data['color_name'], x: tx(USABLE_X), y: ty(58), width: "#{USABLE_W}mm", height: '8mm',
        font: "#{FONT} bold 13", align: :center, valign: :middle, range: range
-  text str: data['hint'], x: tx(USABLE_X), y: ty(75), width: "#{USABLE_W}mm", height: '6mm',
-       font: "#{FONT} 7", align: :center, valign: :middle, color: '#999999', range: range
 end
 
 def draw_number_board_front_p(data, range)
