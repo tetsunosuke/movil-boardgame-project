@@ -9,7 +9,7 @@
 |---|---|---|
 | `career-island/` | キャリア・アイランド | 協力型シリアスゲーム。Web版(Astro+React、1人プレイ+AI NPC)あり |
 | `teppen/` | テッペン | 不良チーム抗争の心理戦カードゲーム。Web版なし、印刷資料のみ |
-| `ai-parrot/` | プロンプト・スパイ 〜AIオウムと秘密の暗号〜 | AIへの話しかけ方を学ぶ対話カードゲーム。Web版(Astro+Gemini API)あり |
+| `ai-parrot/` | コードネームお供オウム | 市販・自作の「コードネーム」ふうゲームに同席させる会話専用AIオウム。Web版のみ(Astro+Gemini API)、印刷物なし |
 | `my-ability-ranking/` | 私の能力ランキング | 自己評価と他者予想のギャップを扱う対話カードゲーム。Web版なし、Python製印刷パイプライン |
 
 ## 各ゲームリポジトリの共通ファイル構成
@@ -41,9 +41,9 @@ npx tsx scripts/gen_flyer_docx.mjs
 ```
 
 各ゲームには上記に加えて、元々あった「デザイン版」の成果物(teppenの折りたたみ版ルールブック、
-ai-parrotの装飾マニュアル、my-ability-rankingの`_v8`一式など)も別名のまま残っています。これらは
-このRULEBOOK/FLYERパイプラインの対象外で、それぞれ個別の生成手段(Ruby/Python/手作りHTML)を
-持っています。
+my-ability-rankingの`_v8`一式など)も別名のまま残っています。これらはこのRULEBOOK/FLYER
+パイプラインの対象外で、それぞれ個別の生成手段(Ruby/Python/手作りHTML)を持っています。
+(ai-parrotの装飾マニュアル・チラシは2026-09-15の方針転換で廃止済み。ai-parrot/README.md参照)
 
 ## `印刷用/` — カード印刷パイプライン
 

@@ -21,7 +21,7 @@ GENERIC_SECTIONS = [
     ("role", "■ 役職カード（3種×2枚／キャラメイクで1人1枚選ぶ・若年期は選択不可）", True),
     ("age", "● 年代カード", True),
     ("goal", "◎ キャリア目標カード", True),
-    ("token", "◆ カード（ひらめき／絆／体力／見通し。入手方法は各カードのsetup欄を参照）", True),
+    ("token", "◆ カード（ヒラメキ／キズナ／パワー／ミトオシ。入手方法は各カードのsetup欄を参照）", True),
     ("labor", "■ Labor（仕事）マスカード", False),
     ("learning", "●● Learning（学習）マスカード", False),
     ("leisure", "- - Leisure（余暇）マスカード", False),
@@ -92,7 +92,7 @@ def render_love_luck_section():
         f'<span class="coord-badge">{esc(r["label"])}</span>' * int(r["Copies"]) for r in rows
     )
     return (
-        f'<div class="sheet-title">絆抽選カード（Loveマス経験後に1枚引く、全{total}枚・裏面なし）</div>'
+        f'<div class="sheet-title">キズナ抽選カード（Loveマス経験後に1枚引く、全{total}枚・裏面なし）</div>'
         f'<div class="coord-list">{badges}</div>'
     )
 

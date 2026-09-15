@@ -145,7 +145,7 @@ Squib::Deck.new(width: CARD_W, height: CARD_H, cards: n) do
 end
 puts "coord_draw: #{n} cards (no back)"
 
-# ── 絆抽選カード(Loveマス経験後に引く5枚、当たり2/ハズレ3、裏面なし) ──
+# ── キズナ抽選カード(Loveマス経験後に引く5枚、当たり2/ハズレ3、裏面なし) ──
 data = Squib.csv file: 'data/love_luck.csv', explode: 'Copies'
 n = data['label'].size
 
@@ -153,7 +153,7 @@ Squib::Deck.new(width: CARD_W, height: CARD_H, cards: n) do
   background color: :white
   text str: data['label'], x: tx(USABLE_X), y: ty(25), width: "#{USABLE_W}mm", height: '30mm',
        font: "#{FONT} bold 20", align: :center, valign: :middle
-  text str: '絆抽選カード', x: tx(USABLE_X), y: ty(74), width: "#{USABLE_W}mm", height: '8mm',
+  text str: 'キズナ抽選カード', x: tx(USABLE_X), y: ty(74), width: "#{USABLE_W}mm", height: '8mm',
        font: "#{FONT} 6.5", align: :center, color: '#555555'
   save_pdf(**pdf_opts('13_love_luck'))
 end

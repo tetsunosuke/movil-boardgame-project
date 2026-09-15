@@ -80,7 +80,7 @@ end
 def draw_love_luck_front_p(data, range)
   text str: data['label'], x: tx(USABLE_X), y: ty(25), width: "#{USABLE_W}mm", height: '30mm',
        font: "#{FONT} bold 20", align: :center, valign: :middle, range: range
-  text str: '絆抽選カード', x: tx(USABLE_X), y: ty(74), width: "#{USABLE_W}mm", height: '8mm',
+  text str: 'キズナ抽選カード', x: tx(USABLE_X), y: ty(74), width: "#{USABLE_W}mm", height: '8mm',
        font: "#{FONT} 6.5", align: :center, color: '#555555', range: range
 end
 

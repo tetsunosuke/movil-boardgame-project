@@ -62,8 +62,25 @@ module Squibcommon
     Array.new(n * 2) { |i| i.even? ? front_arr[i / 2] : back_arr[i / 2] }
   end
 
-  def front_range(n) = (0...(n * 2)).step(2).to_a
-  def back_range(n) = (1...(n * 2)).step(2).to_a
+  def front_range_at(offset, n) = (offset...(offset + n * 2)).step(2).to_a
+  def back_range_at(offset, n) = (offset + 1...(offset + n * 2)).step(2).to_a
+  def front_range(n) = front_range_at(0, n)
+  def back_range(n) = back_range_at(0, n)
+
+  # project()の一般化: 連続したoffsetではなく、任意のインデックス列(front_range_at/
+  # back_range_atの戻り値など)の位置にだけ値を置く版。複数の型を1つの連続したデッキに
+  # まとめつつ、各型が表・裏の交互スロットに散らばる場合(プロトタイプの表裏折り用)に使う。
+  def project_indices(arr, total, indices)
+    out = Array.new(total)
+    indices.each_with_index { |pos, j| out[pos] = arr[j] }
+    out
+  end
+
+  def pad_data_indices(data, total, indices)
+    out = {}
+    data.each { |k, v| out[k] = project_indices(v, total, indices) }
+    out
+  end
 
   # プロトタイプ用: 複数の型(トラブル/役職/…)を1つの連続したデッキにまとめて
   # A4 1枚=9枚のグリッドを型の境界をまたいで隙間なく詰めるためのヘルパー。
