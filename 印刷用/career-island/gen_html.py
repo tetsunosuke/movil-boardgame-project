@@ -50,14 +50,21 @@ def render_generic_card(ctype, row, long_cls):
     bonus_html = f'<div class="card-bonus">{br(row["bonus"])}</div>' if row["bonus"] else ""
     setup_html = f'<div class="card-setup">{br(row["setup"])}</div>' if row["setup"] else ""
     value_cls = "effect-value long" if long_cls else "effect-value"
+    # マスカードの効果は短い数値の増減なので中央寄せ、「※」注記は左寄せ。それ以外の型は文章なので左寄せ。
+    is_tile = ctype in ("labor", "learning", "leisure", "love")
+    lines = row["effect_value"].split("\n")
+    main_txt = "\n".join(l for l in lines if not (is_tile and l.startswith("※")))
+    note_txt = "\n".join(l for l in lines if is_tile and l.startswith("※"))
+    note_html = f'<span class="effect-note">{br(note_txt)}</span>' if note_txt else ""
+    effect_cls = "card-effect" if is_tile else "card-effect left"
     n = max(int(row["Copies"]), 1)
     card = (
         f'<div class="card {ctype}">{icon_html}'
         f'<span class="card-badge">{esc(row["badge"])}</span>'
         f'<div class="card-name">{br(row["name"])}</div>'
         f'{prompt_html}'
-        f'<div class="card-effect"><span class="effect-label">{esc(row["effect_label"])}</span>'
-        f'<span class="{value_cls}">{br(row["effect_value"])}</span></div>'
+        f'<div class="{effect_cls}"><span class="effect-label">{esc(row["effect_label"])}</span>'
+        f'<span class="{value_cls}">{br(main_txt)}</span>{note_html}</div>'
         f'{bonus_html}{setup_html}</div>'
     )
     return card * n
@@ -78,22 +85,28 @@ def render_dilemma_card(row):
 
 def render_coord_section():
     rows = read_csv("coord_draw.csv")
-    badges = "".join(f'<span class="coord-badge">{esc(r["label"])}</span>' for r in rows)
+    cards = "".join(
+        f'<div class="card coordcard"><span class="coord-label">{esc(r["label"])}</span>'
+        f'<span class="coord-caption">座標カード</span></div>'
+        for r in rows
+    )
     return (
         '<div class="sheet-title">座標カード（抽選用、A-1〜E-5の25枚・裏面なし）</div>'
-        f'<div class="coord-list">{badges}</div>'
+        f'<div class="grid">{cards}</div>'
     )
 
 
 def render_love_luck_section():
     rows = read_csv("love_luck.csv")
     total = sum(int(r["Copies"]) for r in rows)
-    badges = "".join(
-        f'<span class="coord-badge">{esc(r["label"])}</span>' * int(r["Copies"]) for r in rows
+    cards = "".join(
+        (f'<div class="card coordcard"><span class="coord-label luck">{esc(r["label"])}</span>'
+         f'<span class="coord-caption">キズナ抽選カード</span></div>') * int(r["Copies"])
+        for r in rows
     )
     return (
         f'<div class="sheet-title">キズナ抽選カード（Loveマス経験後に1枚引く、全{total}枚・裏面なし）</div>'
-        f'<div class="coord-list">{badges}</div>'
+        f'<div class="grid">{cards}</div>'
     )
 
 
@@ -117,7 +130,7 @@ HEAD = """<!DOCTYPE html>
   * { box-sizing: border-box; margin:0; padding:0; }
   body { font-family: var(--font-main); color: var(--text); background: #f2f2f2; padding: 8mm; }
 
-  .sheet-title { font-size: 14px; font-weight:800; color: var(--muted); margin: 6mm 0 3mm; }
+  .sheet-title { font-size: 14px; font-weight:800; color: var(--muted); margin: 6mm 0 3mm; break-after: avoid; page-break-after: avoid; }
 
   .grid {
     display: flex;
@@ -134,6 +147,8 @@ HEAD = """<!DOCTYPE html>
     display: flex;
     flex-direction: column;
     position: relative;
+    break-inside: avoid;
+    page-break-inside: avoid;
     background: #fff;
     border: 2px solid #000;
   }
@@ -146,27 +161,27 @@ HEAD = """<!DOCTYPE html>
   .card.age     { border-style: dashed; border-width: 3px; }
   .card.goal    { border-style: double; border-width: 5px; }
   .card.token   { border-style: solid; border-width: 2px; align-items: center; text-align: center; }
-  .card.token .card-name { margin-top: 4mm; font-size: 17px; }
+  .card.token .card-name { margin-top: 4mm; font-size: 26px; }
   .card.token .card-effect { margin-top: 3mm; }
-  .card.token .card-setup { margin-top: auto; font-size: 7.5px; color: var(--muted); line-height: 1.4; border-top: 1px dashed #999; padding-top: 2mm; }
+  .card.token .card-setup { margin-top: auto; font-size: 12px; color: #333; line-height: 1.45; border-top: 1px dashed #999; padding-top: 2mm; }
 
   .card-badge {
-    font-size: 9px; font-weight: 800; color:#000;
-    padding: 1.5px 7px; border: 1px solid #000; border-radius: 10px; display:inline-block; width: fit-content;
+    font-size: 13px; font-weight: 800; color:#000;
+    padding: 2px 9px; border: 1px solid #000; border-radius: 10px; display:inline-block; width: fit-content;
   }
 
-  .card-icon { position:absolute; top:3.5mm; right:3.2mm; font-size:13px; }
+  .card-icon { position:absolute; top:3.5mm; right:3.2mm; font-size:20px; }
 
   .card-name {
-    font-size: 13.5px;
+    font-size: 20px;
     font-weight: 900;
     line-height: 1.35;
     margin-top: 3mm;
   }
 
   .card-prompt {
-    font-size: 8.5px;
-    color: var(--muted);
+    font-size: 13px;
+    color: #444;
     line-height: 1.4;
     margin-top: 2mm;
   }
@@ -178,9 +193,12 @@ HEAD = """<!DOCTYPE html>
     padding: 1.8mm 2mm;
     text-align: center;
   }
+  .card-effect.left { text-align: left; }
+  .card-effect.left .effect-label { text-align: center; }
+  .effect-note { display: block; text-align: left; font-size: 12px; font-weight: 400; line-height: 1.4; margin-top: 1mm; color: #333; }
   .effect-label {
     display: block;
-    font-size: 7px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 1.5px;
     color: var(--muted);
@@ -188,28 +206,28 @@ HEAD = """<!DOCTYPE html>
   }
   .effect-value {
     display: block;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 900;
     line-height: 1.3;
   }
-  .effect-value.long { font-size: 10px; line-height: 1.35; }
+  .effect-value.long { font-size: 14.5px; line-height: 1.35; }
 
   .card-bonus {
     margin-top: 1.5mm;
-    font-size: 7.3px;
-    line-height: 1.4;
-    color: var(--muted);
-    text-align: center;
+    font-size: 12px;
+    line-height: 1.45;
+    color: #333;
+    text-align: left;
   }
+  .card.token .card-bonus, .card.token .card-setup { text-align: left; align-self: stretch; }
 
-  .dilemma-opt { font-size: 8.4px; line-height: 1.4; margin-top: 2mm; }
-  .dilemma-opt b { display:block; font-size: 8.8px; margin-bottom: 1px; }
+  .dilemma-opt { font-size: 14px; line-height: 1.4; margin-top: 3mm; }
+  .dilemma-opt b { display:block; font-size: 15px; margin-bottom: 2px; }
 
-  .coord-list { display: flex; flex-wrap: wrap; gap: 2mm; margin-bottom: 4mm; }
-  .coord-badge {
-    display: inline-block; width: 14mm; text-align: center; padding: 2mm 0;
-    border: 1px solid #000; border-radius: 2mm; font-weight: 900; font-size: 12px; background: #fff;
-  }
+  .card.coordcard { align-items: center; justify-content: center; text-align: center; border-style: solid; }
+  .coord-label { display: block; font-size: 64px; font-weight: 900; line-height: 1.1; }
+  .coord-label.luck { font-size: 40px; }
+  .coord-caption { display: block; font-size: 14px; color: var(--muted); margin-top: 14mm; }
 </style>
 </head>
 <body>
